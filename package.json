@@ -1,0 +1,61 @@
+{
+  "name": "next.js-netflix-clone",
+  "version": "1.0.0",
+  "description": "A Next.js - Netflix Clone | Powered By React.js",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS=--max_old_space_size=4096 next dev",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write **/*.{js,jsx,ts,tsx,json}",
+    "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "next": "^10.1.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-images": "^1.7.0",
+    "next-seo": "^4.24.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.32.11",
+    "tailwindcss": "^2.1.1",
+    "tailwindcss-children": "^2.1.0",
+    "tailwindcss-important": "^1.0.0",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "@tailwindcss/jit": "^0.1.18",
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.3",
+    "@types/validator": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.0.1",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.23.2",
+    "husky": "4",
+    "lint-staged": "^10.5.4",
+    "postcss": "^8.2.12",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx|js|jsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  }
+}
