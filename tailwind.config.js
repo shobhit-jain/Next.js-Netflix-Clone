@@ -1,4 +1,8 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
+  variants: {
+    extend: {},
+  },
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
@@ -6,6 +10,11 @@ module.exports = {
 
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      },
+    },
     screens: {
       sm: '640px',
       md: '768px',
