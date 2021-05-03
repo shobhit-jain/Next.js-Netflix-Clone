@@ -1,6 +1,12 @@
 const withPlugins = require('next-compose-plugins')
 const withImages = require('next-images')
 
+const whiteList_Image_Domains = {
+  images: {
+    domains: ['assets.nflxext.com'],
+  },
+}
+
 const nextConfig = {
   target: 'serverless',
   compress: true,
@@ -14,6 +20,7 @@ module.exports = withPlugins(
       },
     ],
     [withImages],
+    [whiteList_Image_Domains],
   ],
   nextConfig
 )

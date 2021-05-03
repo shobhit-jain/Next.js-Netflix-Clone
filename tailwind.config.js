@@ -1,4 +1,8 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
+  variants: {
+    extend: {},
+  },
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
@@ -6,6 +10,11 @@ module.exports = {
 
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      },
+    },
     screens: {
       sm: '640px',
       md: '768px',
@@ -58,7 +67,14 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: [
+        'Inter',
+        'Georgia',
+        'Cambria',
+        '"Times New Roman"',
+        'Times',
+        'serif',
+      ],
       mono: [
         'Menlo',
         'Monaco',
@@ -76,10 +92,11 @@ module.exports = {
       700: 700,
     },
     colors: {
-      blue: '#1F95F2',
-      red: '#D41F00',
-      yellow: '#FEBF05',
-      green: '#4AAF50',
+      red: '#e50914',
+      light_grey: '#757575',
+      grey: '#303030',
+      orange: '#ffa00a',
+      blue: '#0071eb',
       white: '#ffffff',
       black: '#000000',
       transparent: 'transparent',

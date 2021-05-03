@@ -8,13 +8,14 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier   --write \"./**/*.{js,jsx,tsx,json}\"",
+    "format": "prettier --write \"./**/*.{js,jsx,tsx,json}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "next": "^10.1.3",
     "next-compose-plugins": "^2.2.1",
+    "next-google-fonts": "^2.2.0",
     "next-images": "^1.7.0",
     "next-seo": "^4.24.0",
     "react": "^17.0.2",
