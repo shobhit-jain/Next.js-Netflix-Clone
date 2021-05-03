@@ -14,8 +14,13 @@ module.exports = {
       fontFamily: {
         sans: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: () => ({
+        'hero-image':
+          'linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("@/assets/section-images/background-image.jpg")',
+      }),
     },
     screens: {
+      xs: '440px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
