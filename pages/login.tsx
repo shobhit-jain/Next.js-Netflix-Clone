@@ -1,25 +1,26 @@
-import React from 'react'
-import useRouter from 'next/router'
-import { NextPage } from 'next'
 import { Footer } from '@/components/common/footer'
+import { SignIn_Form } from '@/components/page-sections/login-page/signin-form/signin-form'
+import { NextPage } from 'next'
+import Image from 'next/image'
+import React from 'react'
 
 export const Login_Page: NextPage = () => {
-  const { router } = useRouter
-
   return (
-    <>
-      <div className="h-screen bg-[#228B22] bg-opacity-70 flex flex-col justify-center items-center">
-        <h1 className="text-4xl text-white font-500">Sign in Page</h1>
-
-        <div
-          onClick={() => router.back()}
-          className="rounded py-1 px-3 text-white border mt-5 hover:bg-[#008000] cursor-pointer"
-        >
-          Go Back
-        </div>
+    <div className="md:bg-hero-image bg-no-repeat bg-cover bg-center bg-black">
+      <div className="pl-[4%] xs:pl-[3%] pt-[20px] xs:!w-[250px] !w-[80px]">
+        <Image
+          src={require('@/assets/icons/netflix-logo.svg')}
+          width="166"
+          height="50"
+        />
       </div>
-      <Footer />
-    </>
+
+      <SignIn_Form />
+
+      <div className="opacity-70 border-t border-[#aaa] md:border-none">
+        <Footer />
+      </div>
+    </div>
   )
 }
 

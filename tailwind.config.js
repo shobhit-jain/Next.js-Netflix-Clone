@@ -1,4 +1,8 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
+  variants: {
+    extend: {},
+  },
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
@@ -6,7 +10,17 @@ module.exports = {
 
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      },
+      backgroundImage: () => ({
+        'hero-image':
+          'linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("@/assets/section-images/background-image.jpg")',
+      }),
+    },
     screens: {
+      xs: '440px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -58,7 +72,14 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: [
+        'Inter',
+        'Georgia',
+        'Cambria',
+        '"Times New Roman"',
+        'Times',
+        'serif',
+      ],
       mono: [
         'Menlo',
         'Monaco',
