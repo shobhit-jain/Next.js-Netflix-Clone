@@ -1,34 +1,42 @@
+import { Footer } from '@/components/common/footer'
+import { Head } from '@/components/common/head'
+import { Create_Profiles_For_Children } from '@/components/page-sections/landing-page/@Section-Profiles-for-children/Create-profiles-for-children'
+import { Download_Your_Shows } from '@/components/page-sections/landing-page/@Section-Download-your-shows/Download-your-shows'
+import { Enjoy_On_Your_Tv } from '@/components/page-sections/landing-page/@Section-Enjoy-on-your-tv/Enjoy-on-your-tv'
+import { Frequently_Asked_Questions } from '@/components/page-sections/landing-page/@Section-Frequently-asked-questions/Frequently-asked-questions'
+import { Main_Section } from '@/components/page-sections/landing-page/@Section-Main/Main-Section'
+import { Watch_Everywhere } from '@/components/page-sections/landing-page/@Section-Watch-everywhere/Watch-everywhere'
 import { NextPage } from 'next'
 import React from 'react'
-import Link from 'next/link'
-import { Footer } from '@/components/common/footer'
-import Nav from '../components/common/Nav'
-import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export const Landing_Page: NextPage = () => {
+  const router = useRouter()
+  const { locale } = router
+
   return (
     <>
-      <div className="">
-        <div className="h-screen p-4">
-          <Image
-            alt="Hero"
-            src="/netflix_background.jpeg"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-          <Nav />
-          <a
-            href="/login"
-            className="authLinks redButton"
-            data-uia="header-login-link"
-          >
-            Sign In
-          </a>
-        </div>
+      <Head
+        title={
+          locale === 'en'
+            ? 'Netflix India – Watch TV Shows Online, Watch Movies Online'
+            : 'Netflix भारत - टीवी शो और फ़िल्में ऑनलाइन देखें'
+        }
+      />
 
-        <Footer />
-      </div>
+      <Main_Section />
+
+      <Enjoy_On_Your_Tv />
+
+      <Download_Your_Shows />
+
+      <Watch_Everywhere />
+
+      <Create_Profiles_For_Children />
+
+      <Frequently_Asked_Questions />
+
+      <Footer />
     </>
   )
 }
