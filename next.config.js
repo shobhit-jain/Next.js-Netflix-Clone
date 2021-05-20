@@ -1,5 +1,6 @@
 const withPlugins = require('next-compose-plugins')
 const withImages = require('next-images')
+const withVideos = require('next-videos')
 
 const whiteList_Image_Domains = {
   images: {
@@ -10,6 +11,15 @@ const whiteList_Image_Domains = {
 const nextConfig = {
   target: 'serverless',
   compress: true,
+
+  i18n: {
+    locales: ['en', 'hi'],
+    defaultLocale: 'en',
+  },
+
+  webpack(config) {
+    return config
+  },
 }
 
 module.exports = withPlugins(
@@ -20,6 +30,7 @@ module.exports = withPlugins(
       },
     ],
     [withImages],
+    [withVideos],
     [whiteList_Image_Domains],
   ],
   nextConfig

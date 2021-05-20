@@ -1,36 +1,44 @@
+import en from '@/locales/page-sections/login-page/@Section-Main/en'
+import hi from '@/locales/page-sections/login-page/@Section-Main/hi'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 export const SignIn_Form: React.FC = () => {
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'en' ? en : hi
+
   return (
-    <div className="bg-black mb-10 md:max-w-[450px] md:p-16 p-[4%] m-auto rounded bg-opacity-70 mb-[90px]">
-      <div className="text-[30px] text-white">Sign In</div>
+    <div className="bg-black mb-10 md:max-w-[450px] md:p-16 p-[4%] m-auto rounded bg-opacity-70 mb-[90px] font-serif">
+      <div className="text-[30px] text-white font-600">{t.signIn}</div>
 
       <form className="flex flex-col mt-[25px] children:rounded children:p-3 children:outline-none">
-        <input
-          type="text"
-          placeholder="Email or phone number"
-          className="mb-5"
-        />
+        <input type="text" placeholder={t.emailPlaceholder} className="mb-5" />
 
-        <input type="password" placeholder="Password" className="mb-10" />
+        <input
+          type="password"
+          placeholder={t.passwordPlaceholder}
+          autoComplete="true"
+          className="mb-10"
+        />
 
         <input
           type="submit"
-          value="Sign In"
-          className="cursor-pointer bg-red text-white"
+          value={t.submitButton}
+          className="cursor-pointer bg-red text-white font-600"
         />
       </form>
 
       <div className="mt-1 flex justify-between text-[#b3b3b3] text-[13px]">
         <div className="flex items-center">
           <input type="checkbox" />
-          <span className="ml-1">Remember me</span>
+          <span className="ml-1">{t.rememberMe}</span>
         </div>
 
         <Link href="#">
-          <a className="hover:underline">Need help?</a>
+          <a className="hover:underline">{t.needHelp}</a>
         </Link>
       </div>
 
@@ -41,22 +49,21 @@ export const SignIn_Form: React.FC = () => {
           height="20"
         />
         <span className="text-[#737373] text-[13px] ml-2">
-          Login with facebook
+          {t.facebookLogin}
         </span>
       </div>
 
       <div className="text-[#737373] mt-5">
-        New to Netflix?{' '}
+        {t.newToNetflix}{' '}
         <Link href="#">
-          <a className="text-white hover:underline">Sign up now.</a>
+          <a className="text-white hover:underline">{t.signUpNow}</a>
         </Link>{' '}
       </div>
 
       <p className="text-[#8c8c8c] mt-2 text-[13px]">
-        This page is protected by Google reCAPTCHA to ensure you&apos;re not a
-        bot.{' '}
+        {t.protectedByReCAPTCHA}{' '}
         <a href="#" className="text-blue hover:underline">
-          Learn more.
+          {t.learnMore}
         </a>
       </p>
     </div>
