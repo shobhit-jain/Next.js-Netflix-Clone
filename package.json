@@ -4,7 +4,7 @@
   "description": "A Next.js - Netflix Clone | Powered By React.js",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS=--max_old_space_size=4096 next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
