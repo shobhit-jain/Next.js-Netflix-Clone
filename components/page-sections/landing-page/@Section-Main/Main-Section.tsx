@@ -5,6 +5,7 @@ import React from 'react'
 import { Enter_Email_And_Get_Started } from '../Common/Enter-email-and-get-started'
 import en from '@/locales/page-sections/landing-page/@Section-Main/en'
 import hi from '@/locales/page-sections/landing-page/@Section-Main/hi'
+import * as ls from 'local-storage'
 
 export const Main_Section: React.FC = () => {
   const router = useRouter()
@@ -50,10 +51,17 @@ export const Main_Section: React.FC = () => {
 
 const Language_Switcher = () => {
   const router = useRouter()
-  const { locale } = router
+  let { locale } = router
+
+  React.useEffect(() => {
+    locale = ls.get('language') // => updating locale (language - value) from local-storage
+    router.push('/', '/', { locale })
+  }, [])
 
   const changeLanguage = (e: any) => {
     const locale = e.target.value
+    ls.set<string>('language', locale) // => setting (language - value) in local-storage
+
     router.push('/', '/', { locale })
   }
 
@@ -61,7 +69,7 @@ const Language_Switcher = () => {
     <>
       <select
         onChange={changeLanguage}
-        defaultValue={locale}
+        value={locale}
         className="md:mr-[30px] sm:mr-[20px] mr-[15px] bg-black text-white px-2 py-[8px] border-[#aaa] focus:border-white border rounded-sm text-sm"
       >
         <option value="en">English</option>
