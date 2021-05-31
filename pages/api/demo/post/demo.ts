@@ -7,15 +7,18 @@ export default async (
 ): Promise<any> => {
   try {
     const { slug } = req.body
-    const entries = await fire.firestore().collection('entries').get()
-    const entriesData = entries.docs.map((entry) => entry.data())
+    const demoData = await fire
+      .firestore()
+      .collection('collection_name_demo')
+      .get()
+    const demosData = demoData.docs.map((data) => data.data())
 
-    if (entriesData.some((entry) => entry.slug === slug)) {
+    if (demosData.some((data) => data.slug === slug)) {
       res.status(400).end()
     } else {
       const { id } = await fire
         .firestore()
-        .collection('entries')
+        .collection('collection_name_demo')
         .add({
           ...req.body,
           created: new Date().toISOString(),

@@ -11,21 +11,25 @@ export default async (
     if (req.method === 'PUT') {
       await fire
         .firestore()
-        .collection('entries')
+        .collection('collection_name_demo')
         .doc(id)
         .update({
           ...req.body,
           updated: new Date().toISOString(),
         })
     } else if (req.method === 'GET') {
-      const doc = await fire.firestore().collection('entries').doc(id).get()
+      const doc = await fire
+        .firestore()
+        .collection('collection_name_demo')
+        .doc(id)
+        .get()
       if (!doc.exists) {
         res.status(404).end()
       } else {
         res.status(200).json(doc.data())
       }
     } else if (req.method === 'DELETE') {
-      await fire.firestore().collection('entries').doc(id).delete()
+      await fire.firestore().collection('collection_name_demo').doc(id).delete()
     }
     res.status(200).end()
   } catch (e) {
