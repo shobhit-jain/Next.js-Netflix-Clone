@@ -36,7 +36,10 @@ export const Main_Section: React.FC = () => {
         </div>
 
         <div className="text-white text-center py-[11.5%] px-[20px] font-serif">
-          <h1 className="lg:text-[60px] md:text-[50px] text-[28px] font-700 lg:max-w-[800px] md:max-w-[600px] max-w-[350px] m-auto leading-tight mb-2">
+          <h1
+            className="lg:text-[60px] md:text-[50px] text-[28px] font-700 lg:max-w-[800px] md:max-w-[600px] max-w-[350px] m-auto leading-tight mb-2"
+            data-cy="heading-main"
+          >
             {t.h1}
           </h1>
 

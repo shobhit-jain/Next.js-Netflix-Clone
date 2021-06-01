@@ -9,7 +9,8 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"./**/*.{js,jsx,tsx,json}\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx"
+    "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -43,6 +44,7 @@
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "babel-plugin-macros": "^3.0.1",
+    "cypress": "^7.4.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.23.2",
