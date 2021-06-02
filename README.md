@@ -29,6 +29,8 @@ Web Frontend Framework - (Next.js) - Netflix-Clone | Powered By React.js
 
 ## Development
 
+- Preview url for branch development : <https://netflix-dev-preview.vercel.app/>
+
 ### Branching workflow
 
 - Always branch out from development
