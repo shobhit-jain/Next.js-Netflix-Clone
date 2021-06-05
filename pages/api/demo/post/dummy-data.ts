@@ -11,20 +11,29 @@ export default async (
       .firestore()
       .collection('collection_name_demo')
       .get()
-    const demosData = demoData.docs.map((data) => data.data())
+    // const demosData = demoData.docs.map((data) => data.data())
 
-    if (demosData.some((data) => data.slug === slug)) {
-      res.status(400).end()
-    } else {
-      const { id } = await fire
-        .firestore()
-        .collection('collection_name_demo')
-        .add({
-          ...req.body,
-          created: new Date().toISOString(),
-        })
-      res.status(200).json({ id })
-    }
+    const { id } = await fire
+      .firestore()
+      .collection('collection_name_demo')
+      .add({
+        ...req.body,
+        created: new Date().toISOString(),
+      })
+    res.status(200).json({ id })
+
+    // if (demosData.some((data) => data.slug === slug)) {
+    //   res.status(400).end()
+    // } else {
+    //   const { id } = await fire
+    //     .firestore()
+    //     .collection('collection_name_demo')
+    //     .add({
+    //       ...req.body,
+    //       created: new Date().toISOString(),
+    //     })
+    //   res.status(200).json({ id })
+    // }
   } catch (e) {
     res.status(400).end()
   }
