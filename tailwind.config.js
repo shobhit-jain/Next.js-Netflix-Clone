@@ -18,7 +18,7 @@ module.exports = {
       },
       backgroundImage: () => ({
         'hero-image':
-          'linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("@/assets/section-images/background-image.jpg")',
+          'linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/images/background/hero-image.jpg")',
       }),
     },
     screens: {
