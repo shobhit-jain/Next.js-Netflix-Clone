@@ -7,37 +7,23 @@ import Document, {
 } from 'next/document'
 
 class MyDocument extends Document {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
 
     return initialProps
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html>
         <Head>
           <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
             rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            href="/fonts/inter/Inter-Regular.ttf"
+            as="font"
+            crossOrigin=""
           />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-            media="print"
-          />
-          <noscript>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-            />
-          </noscript>
         </Head>
         <body>
           <Main />
