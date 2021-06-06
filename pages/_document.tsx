@@ -24,6 +24,12 @@ class MyDocument extends Document {
             as="font"
             crossOrigin=""
           />
+          <link
+            rel="preload"
+            href="/fonts/Inter/Inter-Medium.ttf"
+            as="font"
+            crossOrigin=""
+          />
         </Head>
         <body>
           <Main />
