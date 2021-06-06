@@ -20,7 +20,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/inter/Inter-Regular.ttf"
+            href="/fonts/Inter/Inter-Regular.ttf"
             as="font"
             crossOrigin=""
           />

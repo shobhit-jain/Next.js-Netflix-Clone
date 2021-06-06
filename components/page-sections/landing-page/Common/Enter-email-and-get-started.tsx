@@ -9,7 +9,7 @@ export const Enter_Email_And_Get_Started: React.FC = () => {
 
   return (
     <div className="mt-5">
-      <h3 className="text-[18px]">{t.h3}</h3>
+      <h3 className="sm:text-[18px] text-[16px]">{t.h3}</h3>
 
       <form className="md:mt-5 mt-2 flex lg:flex-row flex-col justify-center">
         <label htmlFor="email">
@@ -22,7 +22,7 @@ export const Enter_Email_And_Get_Started: React.FC = () => {
           />
         </label>
 
-        <button className="lg:mt-0 mt-3 lg:m-0 m-auto bg-red hover:bg-[#f40612] lg:rounded-r-sm lg:rounded-none rounded-sm lg:px-7 px-[16px] py-[8px] px-4 lg:text-[30px] focus:outline-none flex items-center">
+        <button className="lg:mt-0 mt-3 lg:m-0 m-auto bg-red hover:bg-[#f40612] lg:rounded-r-sm lg:rounded-none rounded-sm lg:px-7 px-[16px] py-[8px] lg:text-[30px] focus:outline-none flex items-center">
           {t.button}
           <span className="lg:ml-2 ml-1">
             <Chevron_Right_Arrow />
