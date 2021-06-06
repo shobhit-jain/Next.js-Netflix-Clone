@@ -8,6 +8,8 @@ import Document, {
 import fs from 'fs'
 import path from 'path'
 
+const domain_prefix = 'https://netflix-web.vercel.app'
+
 class InlineStylesHead extends Head {
   getCssLinks({ allFiles }: { allFiles: any }) {
     const { assetPrefix } = this.context
@@ -45,13 +47,13 @@ class MyDocument extends Document {
         <InlineStylesHead>
           <link
             rel="preload"
-            href="/fonts/Inter/Inter-Regular.ttf"
+            href={`${domain_prefix}/fonts/Inter/Inter-Regular.ttf`}
             as="font"
             crossOrigin=""
           />
           <link
             rel="preload"
-            href="/fonts/Inter/Inter-Medium.ttf"
+            href={`${domain_prefix}/fonts/Inter/Inter-Medium.ttf`}
             as="font"
             crossOrigin=""
           />
