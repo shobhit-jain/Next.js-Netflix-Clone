@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write \"./**/*.{js,jsx,tsx,json}\"",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "cypress:open": "cypress open"
   },
@@ -20,7 +20,6 @@
     "local-storage": "^2.0.0",
     "next": "^10.1.3",
     "next-compose-plugins": "^2.2.1",
-    "next-google-fonts": "^2.2.0",
     "next-images": "^1.7.0",
     "next-seo": "^4.24.0",
     "next-videos": "1.4.0",
@@ -62,7 +61,7 @@
     }
   },
   "lint-staged": {
-    "*.@(ts|tsx|js|jsx)": [
+    "*.@(ts|tsx|js|jsx|json|md|mdx|yml)": [
       "yarn lint",
       "yarn format"
     ]

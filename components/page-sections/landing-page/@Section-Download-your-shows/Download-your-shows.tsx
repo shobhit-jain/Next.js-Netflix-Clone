@@ -40,7 +40,7 @@ export const Download_Your_Shows: React.FC = () => {
           </div>
         </div>
 
-        <div className="lg:pl-[100px]">
+        <div className="lg:pl-[100px] text-center lg:text-left">
           <h1 className="xl:text-[50px] sm:text-[40px] text-[26px] font-700 mb-2 leading-tight">
             {t.h1}
           </h1>
