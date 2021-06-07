@@ -1,6 +1,8 @@
+const isProd = process.env.NODE_ENV === 'production'
 const withPlugins = require('next-compose-plugins')
 const withImages = require('next-images')
 const withVideos = require('next-videos')
+const withPWA = require('next-pwa')
 
 const whiteList_Image_Domains = {
   images: {
@@ -36,6 +38,16 @@ module.exports = withPlugins(
     [withImages],
     [withVideos],
     [whiteList_Image_Domains],
+    [
+      withPWA,
+      {
+        pwa: {
+          register: true,
+          disable: !isProd,
+          dest: 'public',
+        },
+      },
+    ],
   ],
   nextConfig
 )

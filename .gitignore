@@ -6,3 +6,5 @@ node_modules
 .env
 .env.local
 todo
+sw.js
+workbox-ea903bce.js
