@@ -45,7 +45,6 @@ module.exports = withPlugins(
           register: true,
           disable: !isProd,
           dest: 'public',
-          scope: '/',
         },
       },
     ],
