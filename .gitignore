@@ -6,5 +6,10 @@ node_modules
 .env
 .env.local
 todo
-sw.js
-workbox-ea903bce.js
+
+# next-pwa : generated files
+fallback-z0HXVkuvlhDIJugs4j1tq.js
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+#

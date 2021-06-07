@@ -107,11 +107,8 @@ const MetaData = () => {
 }
 
 class MyDocument extends Document {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-
-    return initialProps
+  static async getInitialProps(ctx: DocumentContext): Promise<any> {
+    return await Document.getInitialProps(ctx)
   }
 
   render(): JSX.Element {
