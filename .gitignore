@@ -9,8 +9,7 @@ node_modules
 todo
 
 # next-pwa : generated files
-fallback-z0HXVkuvlhDIJugs4j1tq.js
 **/public/sw.js
 **/public/workbox-*.js
 **/public/worker-*.js
-#
+**/public/fallback-*.js
