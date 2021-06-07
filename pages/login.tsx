@@ -9,7 +9,14 @@ import React from 'react'
 export const Login_Page: NextPage = () => {
   return (
     <>
-      <Head title="Netflix" />
+      <Head
+        title="Netflix"
+        description="Login Page Description"
+        canonical="https://netflix-web.vercel.app/login"
+        openGraph_title="Netflix"
+        openGraph_description="Watch Netflix Movies"
+        openGraph_image_url="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"
+      />
 
       <div className="md:bg-hero-image bg-no-repeat bg-cover bg-center bg-black">
         <div className="pl-[4%] xs:pl-[3%] pt-[20px] xs:!w-[250px] !w-[80px]">
