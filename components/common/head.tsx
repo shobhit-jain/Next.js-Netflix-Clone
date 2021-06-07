@@ -8,16 +8,10 @@ type Props = {
   openGraph_image_url?: string
   openGraph_title?: string
   openGraph_description?: string
+  openGraph_site_url?: string
 }
 
-export const Head: React.FC<Props> = ({
-  title,
-  description,
-  canonical,
-  openGraph_description,
-  openGraph_title,
-  openGraph_image_url,
-}) => (
+export const Head: React.FC<Props> = ({ title, description, canonical }) => (
   <>
     <NextSeo
       title={title}
@@ -28,9 +22,9 @@ export const Head: React.FC<Props> = ({
       openGraph={{
         type: 'website',
         locale: 'en_IE',
-        url: openGraph_image_url,
-        title: openGraph_title,
-        description: openGraph_description,
+        url: '',
+        title: 'Netflix',
+        description: 'Watch Movies',
         site_name: 'https://netflix-web.vercel.app',
       }}
       twitter={{
