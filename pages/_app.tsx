@@ -6,7 +6,13 @@ import '../styles/global.css'
 import '../styles/tailwind.css'
 import { useRouter } from 'next/router'
 
-const App: React.FC<AppProps> = ({ Component, pageProps }, window) => {
+declare global {
+  interface Window {
+    workbox: any
+  }
+}
+
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const [isOnline, setIsOnline] = React.useState(true)
 
   React.useEffect(() => {
