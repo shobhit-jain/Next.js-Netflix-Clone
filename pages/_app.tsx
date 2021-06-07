@@ -46,7 +46,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       // skip index route, because it's already cached under `start-url` caching object
       if (router.route !== '/') {
         const wb = window.workbox
-        wb.active.then((worker) => {
+        wb.active.then(() => {
           wb.messageSW({ action: 'CACHE_NEW_ROUTE' })
         })
       }
