@@ -1,4 +1,5 @@
 .git
+.url
 node_modules
 .next
 .out
