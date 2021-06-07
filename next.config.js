@@ -45,6 +45,8 @@ module.exports = withPlugins(
           register: true,
           disable: !isProd,
           dest: 'public',
+          subdomainPrefix: '/login',
+          scope: '/',
         },
       },
     ],
