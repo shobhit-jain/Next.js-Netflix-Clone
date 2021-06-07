@@ -36,6 +36,13 @@ class InlineStylesHead extends Head {
 const MetaData = () => {
   return (
     <>
+      <meta charSet="UTF-8" />
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+      />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+
       {/* preloading fonts */}
       <link
         rel="preload"
