@@ -3,7 +3,7 @@
   src: url('https://netflix-web.vercel.app/fonts/Inter/Inter-Regular.ttf');
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: swap;
 }
 
 @font-face {
@@ -11,5 +11,5 @@
   src: url('https://netflix-web.vercel.app/fonts/Inter/Inter-Medium.ttf');
   font-style: medium;
   font-weight: 700;
-  font-display: optional;
+  font-display: swap;
 }
