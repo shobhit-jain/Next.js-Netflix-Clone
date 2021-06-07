@@ -51,36 +51,39 @@ const MetaData = () => {
       />
 
       {/* icons */}
-      <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+      <link
+        rel="icon"
+        href={`${domain_prefix}/images/favicon/favicon.ico" type="image/x-icon`}
+      />
 
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="images/favicon/favicon-32x32.png"
+        href={`${domain_prefix}/images/favicon/favicon-32x32.png`}
       />
 
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="images/favicon/favicon-16x16.png"
+        href={`${domain_prefix}/images/favicon/favicon-16x16.png`}
       />
 
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="images/favicon/apple-touch-icon.png"
+        href={`${domain_prefix}/images/favicon/apple-touch-icon.png`}
       />
 
       <link
         rel="mask-icon"
-        href="images/favicon/safari-pinned-tab.svg"
+        href={`${domain_prefix}/images/favicon/safari-pinned-tab.svg`}
         color="#e50914"
       />
 
       {/* site manifest */}
-      <link rel="manifest" href="site.webmanifest" />
+      <link rel="manifest" href={`${domain_prefix}/site.webmanifest`} />
 
       {/* web-app title for chrome */}
       <meta name="application-name" content="Netflix" />
