@@ -53,7 +53,8 @@ const MetaData = () => {
       {/* icons */}
       <link
         rel="icon"
-        href={`${domain_prefix}/images/favicon/favicon.ico" type="image/x-icon`}
+        href={`${domain_prefix}/images/favicon/favicon.ico"`}
+        type="image/x-icon"
       />
 
       <link
