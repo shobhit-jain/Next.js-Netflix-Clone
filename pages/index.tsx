@@ -24,9 +24,6 @@ export const Landing_Page: NextPage = () => {
         }
         description="Landing Page Description"
         canonical="https://netflix-web.vercel.app"
-        openGraph_title="Netflix"
-        openGraph_description="Watch Netflix Movies"
-        openGraph_image_url="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"
       />
 
       <Main_Section />
