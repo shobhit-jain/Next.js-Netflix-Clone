@@ -32,6 +32,7 @@ export const Main_Section: React.FC = () => {
                 {t.signIn}
               </a>
             </Link>
+
             <Link href="/admin/edit">
               <a className="text-white px-3  md:px-5 py-[8px] rounded-sm text-[15px] bg-red font-serif">
                 edit
