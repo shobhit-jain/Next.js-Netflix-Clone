@@ -83,6 +83,9 @@ const MetaData = () => {
         sizes="180x180"
         href={`${domain_prefix}/images/favicon/apple-touch-icon.png`}
       />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Netflix" />
 
       <link
         rel="mask-icon"
