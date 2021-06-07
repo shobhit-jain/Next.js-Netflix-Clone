@@ -33,6 +33,11 @@ export const Head: React.FC<Props> = ({
         description: openGraph_description,
         site_name: 'https://netflix-web.vercel.app',
       }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+      }}
     />
   </>
 )
