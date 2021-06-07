@@ -5,7 +5,7 @@ import { useToggle, useVibrate } from 'react-use'
 export const Testing_React_Use: NextPage = () => {
   const [vibrating, toggleVibrating] = useToggle(false)
 
-  useVibrate(vibrating, [300, 100, 200, 100, 1000, 300], false)
+  useVibrate(vibrating, [300, 100, 200, 100, 1000, 300], true)
 
   return (
     <div className="text-center">
@@ -16,7 +16,7 @@ export const Testing_React_Use: NextPage = () => {
       <div>
         <button
           className="bg-blue p-2 rounded text-white"
-          onClick={() => toggleVibrating}
+          onClick={toggleVibrating}
         >
           {vibrating ? 'Stop' : 'Vibrate'}
         </button>
