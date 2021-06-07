@@ -1,4 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   variants: {
     extend: {},
@@ -13,9 +12,6 @@ module.exports = {
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
-      },
       backgroundImage: () => ({
         'hero-image':
           'linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)), url("/images/background/hero-image.jpg")',
@@ -60,7 +56,9 @@ module.exports = {
       '8xl': '5rem',
     },
     fontFamily: {
-      sans: [
+      default: [],
+      serif: [
+        'Inter',
         'system-ui',
         '-apple-system',
         'BlinkMacSystemFont',
@@ -72,15 +70,6 @@ module.exports = {
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
-      ],
-      serif: ['Inter', 'system-ui'],
-      mono: [
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        '"Liberation Mono"',
-        '"Courier New"',
-        'monospace',
       ],
     },
     fontWeight: {
