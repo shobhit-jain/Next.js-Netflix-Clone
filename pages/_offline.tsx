@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 
-console.log('ok')
 export const Offline_Fallback_Page: NextPage = () => (
   <div className="bg-red h-screen text-white text-center flex items-center justify-center flex-col">
     <h1>You are not connected to internet !</h1>
