@@ -2844,6 +2844,13 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
+devtools-detector@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/devtools-detector/-/devtools-detector-2.0.2.tgz#546442cab1a2a1513ffb40f755a49f6850c68f40"
+  integrity sha512-MUrLzSYzECC0kbU7QJC/EawdeipDgh3HyeP7wRBnXWXPPgMKCVLvDFKOe8UQ4XqtlH9ilgLePhl1LlXy/ilFgA==
+  dependencies:
+    compare-versions "^3.6.0"
+
 didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
@@ -3703,6 +3710,11 @@ hmac-drbg@^1.0.1:
     hash.js "^1.0.3"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
+
+hotkeys-js@^3.8.1:
+  version "3.8.5"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.8.5.tgz#a66030c48b75ceb2f3fc48fd39e7a0b3473a4b19"
+  integrity sha512-beJJ2Y4J6XkSlXlLPOG29BRKxZx3bV0gVi3eUpYdjrecN1i25iqndM/+X1eIDPSeG0XdqSv7Ksek43j5tQrmPQ==
 
 html-tags@^3.1.0:
   version "3.1.0"
@@ -5412,6 +5424,14 @@ react-hook-form@^7.7.1:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.8.1.tgz#291609c50778bf8bc94e5d4c586e9ee5c6dd512f"
   integrity sha512-pwWxd4UfwsKVh/W2YE2Hnu7KBY4KTCZq3QO1PMISzP31AZ5Kmv6ji085QVIHVWVSLT4oX6IhmZ2bWJ2oBIwobQ==
+
+react-hot-keys@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/react-hot-keys/-/react-hot-keys-2.6.2.tgz#32fba45d9bf854a12f75994f421cb7047e5a3338"
+  integrity sha512-BMyIrQqQg5H7VWPW0OlJe+MTVZ68t37kkGF2ELvQqgCBPEMbvi6jhb7V4gKYkUV/BetqNnLTrUC4LUMW6myr1Q==
+  dependencies:
+    hotkeys-js "^3.8.1"
+    prop-types "^15.7.2"
 
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
