@@ -1,9 +1,7 @@
 import { Footer } from '@/components/common/footer'
 import { Head } from '@/components/common/head'
-import { SignIn_Form } from '@/components/page-sections/login-page/signin-form/signin-form'
+import { Login_Page_Main_Section } from '@/components/page-sections/login-page/@Section-Main/Main-Section'
 import { NextPage } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 export const Login_Page: NextPage = () => {
@@ -16,19 +14,7 @@ export const Login_Page: NextPage = () => {
       />
 
       <div className="md:bg-hero-image bg-no-repeat bg-cover bg-center bg-black">
-        <div className="pl-[4%] xs:pl-[3%] pt-[20px] xs:!w-[250px] !w-[80px]">
-          <Link href="/">
-            <a>
-              <Image
-                src={require('@/assets/icons/netflix-logo.svg')}
-                width="166"
-                height="50"
-              />
-            </a>
-          </Link>
-        </div>
-
-        <SignIn_Form />
+        <Login_Page_Main_Section />
 
         <div className="opacity-70 border-t border-[#aaa] md:border-none">
           <Footer />
