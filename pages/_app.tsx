@@ -1,12 +1,16 @@
 const isProd = process.env.NODE_ENV === 'production'
 import axios from 'axios'
 import { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { SWRConfig } from 'swr'
 import '../styles/global.css'
 import '../styles/tailwind.css'
-import dynamic from 'next/dynamic'
+
+const WebSecurity = dynamic(() => import('security/webSecurity'), {
+  ssr: false,
+})
 
 declare global {
   interface Window {
@@ -73,9 +77,5 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     </>
   )
 }
-
-const WebSecurity = dynamic(() => import('security/webSecurity'), {
-  ssr: false,
-})
 
 export default App

@@ -3,6 +3,7 @@ import hi from '@/locales/page-sections/landing-page/@Section-Frequently-asked-q
 import { useRouter } from 'next/router'
 import React from 'react'
 import { Enter_Email_And_Get_Started } from '../Common/Enter-email-and-get-started'
+import { Faqs_Accordion } from './components/Faqs-Accordion'
 
 export const Frequently_Asked_Questions: React.FC = () => {
   const router = useRouter()
@@ -12,11 +13,13 @@ export const Frequently_Asked_Questions: React.FC = () => {
   return (
     <>
       <section className="bg-black text-white py-16 border-t-8 border-[#222] font-serif text-center">
-        <h1 className="xl:text-[50px] sm:text-[40px] text-[26px] font-700 mb-2 px-[20px]">
+        <h1 className="xl:text-[50px] sm:text-[40px] text-[26px] font-700 mb-10 px-[20px]">
           {t.h1}
         </h1>
 
-        <div className="px-[20px]">
+        <Faqs_Accordion />
+
+        <div className="px-[20px] mt-7">
           <Enter_Email_And_Get_Started />
         </div>
       </section>
