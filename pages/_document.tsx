@@ -122,6 +122,10 @@ class MyDocument extends Document {
         </InlineStylesHead>
 
         <body>
+          <noscript>
+            <meta httpEquiv="refresh" content="1; url=about:blank" />
+          </noscript>
+
           <Main />
           <NextScript />
         </body>
