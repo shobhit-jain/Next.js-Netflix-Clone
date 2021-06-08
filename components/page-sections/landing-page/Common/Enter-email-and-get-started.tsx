@@ -9,8 +9,6 @@ export const Enter_Email_And_Get_Started: React.FC = () => {
   const { locale } = router
   const t = locale === 'en' ? en : hi
 
-  console.log(t)
-
   const {
     register,
     formState: { errors },
