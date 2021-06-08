@@ -1,11 +1,11 @@
+import en from '@/locales/page-sections/landing-page/@Section-Main/en'
+import hi from '@/locales/page-sections/landing-page/@Section-Main/hi'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useLocalStorage } from 'react-use'
 import { Enter_Email_And_Get_Started } from '../Common/Enter-email-and-get-started'
-import en from '@/locales/page-sections/landing-page/@Section-Main/en'
-import hi from '@/locales/page-sections/landing-page/@Section-Main/hi'
-import * as ls from 'local-storage'
 
 export const Main_Section: React.FC = () => {
   const router = useRouter()
@@ -53,18 +53,20 @@ export const Main_Section: React.FC = () => {
 }
 
 const Language_Switcher = () => {
+  const [language, setLanguage] = useLocalStorage('language', 'en')
+
   const router = useRouter()
   let { locale } = router
 
   React.useEffect(() => {
-    locale = ls.get('language') // => updating locale (language - value) from local-storage
+    locale = language // => updating locale (language - value) from local-storage
     router.push('/', '/', { locale })
   }, [])
 
   const changeLanguage = (e: any) => {
     const locale = e.target.value
-    ls.set<string>('language', locale) // => setting (language - value) in local-storage
 
+    setLanguage(locale) // => setting (language - value) in local-storage
     router.push('/', '/', { locale })
   }
 
