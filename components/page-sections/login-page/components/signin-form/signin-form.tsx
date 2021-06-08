@@ -11,17 +11,21 @@ export const SignIn_Form: React.FC = () => {
   const t = locale === 'en' ? en : hi
 
   return (
-    <div className="bg-black mb-10 md:max-w-[450px] md:p-16 p-[4%] m-auto rounded bg-opacity-70 mb-[90px] font-serif">
+    <div className="bg-black md:max-w-[450px] md:p-16 p-[4%] m-auto rounded bg-opacity-70 md:mt-[20px] md:mb-[120px] mb-[90px] font-serif">
       <div className="text-[30px] text-white font-600">{t.signIn}</div>
 
       <form className="flex flex-col mt-[25px] children:rounded children:p-3 children:outline-none">
-        <input type="text" placeholder={t.emailPlaceholder} className="mb-5" />
+        <input
+          type="text"
+          placeholder={t.emailPlaceholder}
+          className="mb-5 bg-[#333] text-white"
+        />
 
         <input
           type="password"
           placeholder={t.passwordPlaceholder}
           autoComplete="true"
-          className="mb-10"
+          className="mb-10 bg-[#333] text-white"
         />
 
         <input
@@ -55,12 +59,12 @@ export const SignIn_Form: React.FC = () => {
 
       <div className="text-[#737373] mt-5">
         {t.newToNetflix}{' '}
-        <Link href="#">
+        <Link href="/">
           <a className="text-white hover:underline">{t.signUpNow}</a>
         </Link>{' '}
       </div>
 
-      <p className="text-[#8c8c8c] mt-2 text-[13px]">
+      <p className="text-[#8c8c8c] mt-2 mb-10 text-[13px]">
         {t.protectedByReCAPTCHA}{' '}
         <a href="#" className="text-blue hover:underline">
           {t.learnMore}
