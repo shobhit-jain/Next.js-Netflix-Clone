@@ -48,7 +48,19 @@ const Testing_State: NextPage = () => {
 
         <div>flowers : {flowers}</div>
       </div>
+
+      <Other />
     </div>
+  )
+}
+
+const Other = () => {
+  const items = Dom_Element_Store.useStoreState((state) => state.items)
+
+  return (
+    <>
+      <div>{items}</div>
+    </>
   )
 }
 
