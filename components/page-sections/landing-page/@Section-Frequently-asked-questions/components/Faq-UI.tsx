@@ -10,12 +10,12 @@ export const Faq_UI: React.FC<Props> = ({ title, children }) => {
 
   return (
     <>
-      <div className="bg-[#333] md:max-w-[700px] lg:max-w-[815px]  m-auto mb-2">
+      <div className="bg-[#333] md:max-w-[700px] lg:max-w-[815px]  m-auto mb-2 select-none">
         <div
           onClick={() => {
             setIsOpen(!isOpen)
           }}
-          className="flex justify-between cursor-pointer items-center py-5 border-b border-black px-5"
+          className="flex justify-between sm:cursor-pointer cursor-not-allowed items-center py-5 border-b border-black px-5"
         >
           <h2 className="md:text-2xl text-xl">{title}</h2>
 

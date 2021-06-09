@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
+import { AllStateProvider } from '@/provider/AllStateProvider'
 import axios from 'axios'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
@@ -66,7 +67,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
           fetcher: (url: string) => axios(url).then((r: any) => r.data),
         }}
       >
-        <Component {...pageProps} />
+        <AllStateProvider>
+          <Component {...pageProps} />
+        </AllStateProvider>
       </SWRConfig>
 
       {isProd && (
