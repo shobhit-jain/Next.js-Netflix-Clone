@@ -29,7 +29,7 @@ export const Faq_UI: React.FC<Props> = ({ title, children }) => {
         </div>
 
         <Collapse isOpened={isOpen}>
-          <div className="text-left text-2xl p-5">
+          <div className="text-left md:text-2xl text-xl p-5">
             <div>{children}</div>
           </div>
         </Collapse>
