@@ -6289,6 +6289,11 @@ tailwindcss-children@^2.1.0:
     lodash "^4.17.15"
     postcss-selector-parser "^6.0.2"
 
+tailwindcss-important@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-important/-/tailwindcss-important-1.0.0.tgz#fd86fd64335ca7bfeb43df82f8a1f900da86e11b"
+  integrity sha512-uW7n5Wwb+miuXU48uPqS4QhBNzYrCQZ9tA/46jKJqKYILzXcMnVbWtHYe6Y8KsHOhu900ohNf5sJMwtaBkcJBg==
+
 tailwindcss@^2.1.1:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.1.4.tgz#ee8a1b8ccc140db61960b6738f968a8a1c4cd1f8"

@@ -32,21 +32,24 @@ export const Enter_Email_And_Get_Started: React.FC = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="md:mt-5 mt-2 flex lg:flex-row flex-col justify-center"
       >
-        <label htmlFor="email">
+        <label
+          htmlFor="email"
+          className="relative md:w-[500px] w-full m-auto lg:m-0"
+        >
           <input
             {...register('email', { required: true })}
             type="email"
             name="email"
             defaultValue={userInputEmail}
             placeholder={t.placeholder}
-            className={`relative text-black focus:outline-none py-3 md:py-5 px-3 lg:rounded-l-sm lg:rounded-none rounded-sm md:w-[500px] w-full ${
+            className={`text-black focus:outline-none py-3 md:py-5 px-3 lg:rounded-l-sm lg:rounded-none rounded-sm md:w-[500px] w-full  ${
               errors.email?.type === 'required' &&
               'border-b-[2px] border-[#ff9f38]'
             }`}
           />
 
           {errors.email?.type === 'required' && (
-            <p className="text-[#ff9f38] text-base absolute mt-1 ml-1">
+            <p className="text-[#ff9f38] sm:text-base text-tiny absolute mt-1 ml-1">
               {locale === 'en' ? 'Email is required' : 'ईमेल डालना ज़रूरी है!'}
             </p>
           )}
