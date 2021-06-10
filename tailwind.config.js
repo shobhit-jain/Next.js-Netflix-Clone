@@ -6,7 +6,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  mode: 'jit',
+  // mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
@@ -93,5 +93,8 @@ module.exports = {
       transition: '0.3s all ease-in',
     },
   },
-  plugins: [require('tailwindcss-children')],
+  plugins: [
+    require('tailwindcss-children'),
+    require('tailwindcss-important')(),
+  ],
 }
