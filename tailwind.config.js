@@ -93,8 +93,5 @@ module.exports = {
       transition: '0.3s all ease-in',
     },
   },
-  plugins: [
-    require('tailwindcss-children'),
-    require('tailwindcss-important')(),
-  ],
+  plugins: [require('tailwindcss-children')],
 }

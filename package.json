@@ -10,7 +10,8 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "audit:fix": "npx yarn-audit-fix"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -35,7 +36,6 @@
     "swr": "^0.5.6",
     "tailwindcss": "^2.1.4",
     "tailwindcss-children": "^2.1.0",
-    "tailwindcss-important": "^1.0.0",
     "typescript": "^4.2.4"
   },
   "devDependencies": {
