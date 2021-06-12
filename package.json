@@ -29,6 +29,7 @@
     "react": "^17.0.2",
     "react-collapse": "^5.1.0",
     "react-dom": "^17.0.2",
+    "react-google-login": "^5.2.2",
     "react-hook-form": "^7.7.1",
     "react-hot-keys": "^2.6.2",
     "react-use": "^17.2.4",
