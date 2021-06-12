@@ -9,10 +9,15 @@ import { Watch_Everywhere } from '@/components/page-sections/landing-page/@Secti
 import { NextPage } from 'next'
 import React from 'react'
 import { useRouter } from 'next/router'
+import GoogleLogin from 'react-google-login'
 
 export const Landing_Page: NextPage = () => {
   const router = useRouter()
   const { locale } = router
+
+  const responseGoogle = (response) => {
+    console.log(response)
+  }
 
   return (
     <>
@@ -26,18 +31,20 @@ export const Landing_Page: NextPage = () => {
         canonical="https://netflix-web.vercel.app"
       />
 
+      <GoogleLogin
+        clientId="616382430524-7fvjkmdigp5oqn645gfhf77bsnfq05ud.apps.googleusercontent.com"
+        buttonText="Login With Google"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+      />
+
       <Main_Section />
-
       <Enjoy_On_Your_Tv />
-
       <Download_Your_Shows />
-
       <Watch_Everywhere />
-
       <Create_Profiles_For_Children />
-
       <Frequently_Asked_Questions />
-
       <Footer />
     </>
   )
