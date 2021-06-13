@@ -15,10 +15,6 @@ export const Landing_Page: NextPage = () => {
   const router = useRouter()
   const { locale } = router
 
-  const responseGoogle = (response) => {
-    console.log(response)
-  }
-
   return (
     <>
       <Head
@@ -29,14 +25,6 @@ export const Landing_Page: NextPage = () => {
         }
         description="Landing Page Description"
         canonical="https://netflix-web.vercel.app"
-      />
-
-      <GoogleLogin
-        clientId="616382430524-7fvjkmdigp5oqn645gfhf77bsnfq05ud.apps.googleusercontent.com"
-        buttonText="Login With Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
       />
 
       <Main_Section />
