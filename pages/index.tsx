@@ -15,7 +15,9 @@ import useSWR from 'swr'
 const API_ENDPOINT = '/api/graphql'
 
 const helloQuery = `{
-    hello
+    hello(
+      name: "sam"
+    )
 }`
 
 export const Landing_Page: NextPage = () => {
