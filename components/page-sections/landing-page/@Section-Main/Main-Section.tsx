@@ -4,13 +4,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+// import GoogleLogin from 'react-google-login'
 import { useLocalStorage } from 'react-use'
 import { Enter_Email_And_Get_Started } from '../Common/Enter-email-and-get-started'
+import { useGoogleLogin } from 'react-google-login'
 
 export const Main_Section: React.FC = () => {
   const router = useRouter()
   const { locale } = router
   const t = locale === 'en' ? en : hi
+
+  const responseGoogle = (response: any) => {
+    console.log(response)
+  }
+
+  const clientId =
+    '616382430524-7fvjkmdigp5oqn645gfhf77bsnfq05ud.apps.googleusercontent.com'
+
+  const { signIn } = useGoogleLogin({
+    onSuccess: responseGoogle,
+    onFailure: responseGoogle,
+    clientId,
+    isSignedIn: true,
+  })
 
   return (
     <>
@@ -23,6 +39,23 @@ export const Main_Section: React.FC = () => {
               height="50"
             />
           </div>
+
+          <button
+            className="text-white bg-blue px-5 rounded"
+            onClick={() => signIn()}
+          >
+            Sign In
+          </button>
+
+          {/* <GoogleLogin
+            clientId="616382430524-7fvjkmdigp5oqn645gfhf77bsnfq05ud.apps.googleusercontent.com"
+            disabled={false}
+            buttonText="Login With Google"
+            className=""
+            // onSuccess={responseGoogle}
+            // onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          /> */}
 
           <div>
             <Language_Switcher />
