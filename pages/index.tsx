@@ -13,6 +13,7 @@ import { request } from 'graphql-request'
 import useSWR from 'swr'
 
 const API_ENDPOINT = '/api/graphql'
+
 const helloQuery = `{
     hello
 }`
