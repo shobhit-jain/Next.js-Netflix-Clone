@@ -64,6 +64,11 @@
     "postcss": "^8.2.12",
     "prettier": "^2.2.1"
   },
+  "peerDependencies": {},
+  "optionalDependencies": {
+    "bufferutil": "^4.0.3",
+    "utf-8-validate": "^5.0.5"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
