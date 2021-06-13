@@ -42,8 +42,6 @@ export const Landing_Page: NextPage = () => {
         canonical="https://netflix-web.vercel.app"
       />
 
-      <div>{!hello ? 'loading . .' : hello.hello}</div>
-
       <Main_Section />
       <Enjoy_On_Your_Tv />
       <Download_Your_Shows />

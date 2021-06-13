@@ -40,12 +40,12 @@ export const Main_Section: React.FC = () => {
             />
           </div>
 
-          <button
+          {/* <button
             className="text-white bg-blue px-5 rounded"
             onClick={() => signIn()}
           >
             Sign In
-          </button>
+          </button> */}
 
           {/* <GoogleLogin
             clientId="616382430524-7fvjkmdigp5oqn645gfhf77bsnfq05ud.apps.googleusercontent.com"
