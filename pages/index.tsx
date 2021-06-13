@@ -9,11 +9,23 @@ import { Watch_Everywhere } from '@/components/page-sections/landing-page/@Secti
 import { NextPage } from 'next'
 import React from 'react'
 import { useRouter } from 'next/router'
-import GoogleLogin from 'react-google-login'
+import { request } from 'graphql-request'
+import useSWR from 'swr'
+
+const API_ENDPOINT = '/api/graphql'
+const helloQuery = `{
+    hello
+}`
 
 export const Landing_Page: NextPage = () => {
   const router = useRouter()
   const { locale } = router
+
+  const { data: hello, error } = useSWR(helloQuery, (query) =>
+    request(API_ENDPOINT, query)
+  )
+
+  console.log(!hello ? 'loading . .' : hello.hello)
 
   return (
     <>
@@ -26,6 +38,8 @@ export const Landing_Page: NextPage = () => {
         description="Landing Page Description"
         canonical="https://netflix-web.vercel.app"
       />
+
+      <div>{!hello ? 'loading . .' : hello.hello}</div>
 
       <Main_Section />
       <Enjoy_On_Your_Tv />
