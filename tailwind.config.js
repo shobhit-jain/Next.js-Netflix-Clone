@@ -2,10 +2,10 @@ module.exports = {
   variants: {
     extend: {},
   },
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
+  // future: {
+  //   removeDeprecatedGapUtilities: true,
+  //   purgeLayersByDefault: true,
+  // },
   mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
@@ -55,7 +55,6 @@ module.exports = {
       '8xl': '5rem',
     },
     fontFamily: {
-      default: [],
       serif: [
         'Inter',
         'system-ui',
