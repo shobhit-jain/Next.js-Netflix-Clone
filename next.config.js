@@ -14,9 +14,9 @@ const nextConfig = {
   target: 'serverless',
   compress: true,
 
-  // future: {
-  //   webpack5: true,
-  // },
+  future: {
+    webpack5: true,
+  },
 
   i18n: {
     locales: ['en', 'hi'],
@@ -27,17 +27,18 @@ const nextConfig = {
   //   return config
   // },
 
-  webpack: (config, options, isServer) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-        module: 'empty',
-      }
-    }
+  // webpack: (config, options, isServer) => {
+  //   // Fixes npm packages that depend on `fs` module
+  //   if (!isServer) {
+  //     config.node = {
+  //       fs: 'empty',
+  //       module: 'empty',
+  //       net: 'empty',
+  //     }
+  //   }
 
-    return config
-  },
+  //   return config
+  // },
 }
 
 module.exports = withPlugins(

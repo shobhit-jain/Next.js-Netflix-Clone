@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A Next.js - Netflix Clone | Powered By React.js",
   "private": true,
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -63,10 +68,13 @@
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.23.2",
+    "fast-crc32c": "^2.0.0",
+    "hash-stream-validation": "^0.2.4",
     "husky": "4",
     "lint-staged": "^10.5.4",
     "postcss": "^8.2.12",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "request": "^2.88.2"
   },
   "peerDependencies": {},
   "optionalDependencies": {
