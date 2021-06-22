@@ -6,7 +6,7 @@ const withPWA = require('next-pwa')
 
 const whiteList_Image_Domains = {
   images: {
-    domains: ['assets.nflxext.com'],
+    domains: ['assets.nflxext.com', 'upload.wikimedia.org'],
   },
 }
 
@@ -14,16 +14,28 @@ const nextConfig = {
   target: 'serverless',
   compress: true,
 
-  future: {
-    webpack5: true,
-  },
+  // future: {
+  //   webpack5: true,
+  // },
 
   i18n: {
     locales: ['en', 'hi'],
     defaultLocale: 'en',
   },
 
-  webpack(config) {
+  // webpack(config) {
+  //   return config
+  // },
+
+  webpack: (config, options, isServer) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+        module: 'empty',
+      }
+    }
+
     return config
   },
 }

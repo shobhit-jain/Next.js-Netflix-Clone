@@ -4,11 +4,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { fire } from '@/firebase/firebase'
 
 export const SignIn_Form: React.FC = () => {
+  const googleProvider = new fire.auth.GoogleAuthProvider()
   const router = useRouter()
   const { locale } = router
   const t = locale === 'en' ? en : hi
+
+  const signInWithGoogle = () => {
+    fire
+      .auth()
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        console.log(res.user)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
 
   return (
     <div className="bg-black md:max-w-[450px] md:p-16 p-[4%] m-auto rounded bg-opacity-70 md:mt-[20px] md:mb-[120px] mb-[90px] font-serif">
@@ -46,15 +60,16 @@ export const SignIn_Form: React.FC = () => {
         </Link>
       </div>
 
-      <div className="mt-[60px] flex items-center cursor-pointer">
+      <div
+        onClick={() => signInWithGoogle()}
+        className="mt-[60px] inline-flex justify-center items-center cursor-pointer"
+      >
         <Image
-          src="https://assets.nflxext.com/ffe/siteui/login/images/FB-f-Logo__blue_57.png"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png"
           width="20"
           height="20"
         />
-        <span className="text-[#737373] text-[13px] ml-2">
-          {t.facebookLogin}
-        </span>
+        <span className="text-[#737373] text-[13px] ml-2">{t.googleLogin}</span>
       </div>
 
       <div className="text-[#737373] mt-5">

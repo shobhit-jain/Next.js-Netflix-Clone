@@ -11,6 +11,11 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { request } from 'graphql-request'
 import useSWR from 'swr'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { fire } from '@/firebase/firebase'
+import nookies from 'nookies'
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+import { firebaseAdmin } from '@/firebase/firebase-admin'
 
 const API_ENDPOINT = '/api/graphql'
 
@@ -20,15 +25,31 @@ const helloQuery = `{
     )
 }`
 
-export const Landing_Page: NextPage = () => {
+export const Landing_Page: NextPage = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
   const router = useRouter()
   const { locale } = router
+  const [user, loading, error] = useAuthState(fire.auth())
 
-  const { data: hello, error } = useSWR(helloQuery, (query) =>
+  const { data: hello, error: e } = useSWR(helloQuery, (query) =>
     request(API_ENDPOINT, query)
   )
 
   console.log(!hello ? 'loading . .' : hello.hello)
+
+  // console.log(auth)
+
+  // if (loading) {
+  //   return null
+  // }
+
+  // if (user) {
+  //   setTimeout(() => {
+  //     router.push('/browse')
+  //   }, 0)
+  //   return <></>
+  // }
 
   return (
     <>
@@ -42,6 +63,9 @@ export const Landing_Page: NextPage = () => {
         canonical="https://netflix-web.vercel.app"
       />
 
+      <div>
+        <p>{props.message}</p>
+      </div>
       <Main_Section />
       <Enjoy_On_Your_Tv />
       <Download_Your_Shows />
@@ -54,3 +78,33 @@ export const Landing_Page: NextPage = () => {
 }
 
 export default Landing_Page
+
+export const getServerSideProps = async (
+  ctx: GetServerSidePropsContext
+): Promise<any> => {
+  try {
+    const cookies = nookies.get(ctx)
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
+
+    // the user is authenticated!
+    const { uid, email } = token
+
+    // FETCH STUFF HERE!! 🚀
+
+    return {
+      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+    }
+  } catch (err) {
+    // either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    ctx.res.writeHead(302, { Location: '/login' })
+    ctx.res.end()
+
+    // `as never` prevents inference issues
+    // with InferGetServerSidePropsType.
+    // The props returned here don't matter because we've
+    // already redirected the user.
+    return { props: {} as never }
+  }
+}
