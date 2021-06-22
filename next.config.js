@@ -6,7 +6,7 @@ const withPWA = require('next-pwa')
 
 const whiteList_Image_Domains = {
   images: {
-    domains: ['assets.nflxext.com'],
+    domains: ['assets.nflxext.com', 'upload.wikimedia.org'],
   },
 }
 
@@ -23,9 +23,22 @@ const nextConfig = {
     defaultLocale: 'en',
   },
 
-  webpack(config) {
-    return config
-  },
+  // webpack(config) {
+  //   return config
+  // },
+
+  // webpack: (config, options, isServer) => {
+  //   // Fixes npm packages that depend on `fs` module
+  //   if (!isServer) {
+  //     config.node = {
+  //       fs: 'empty',
+  //       module: 'empty',
+  //       net: 'empty',
+  //     }
+  //   }
+
+  //   return config
+  // },
 }
 
 module.exports = withPlugins(

@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
+import { AuthProvider } from '@/firebase/context_provider/context_Provider'
 import { AllStateProvider } from '@/provider/AllStateProvider'
 import axios from 'axios'
 import { AppProps } from 'next/app'
@@ -68,7 +69,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         }}
       >
         <AllStateProvider>
-          <Component {...pageProps} />
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
         </AllStateProvider>
       </SWRConfig>
 

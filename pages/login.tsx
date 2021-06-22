@@ -1,10 +1,30 @@
+import { GetServerSideProps } from 'next'
 import { Footer } from '@/components/common/footer'
 import { Head } from '@/components/common/head'
 import { Login_Page_Main_Section } from '@/components/page-sections/login-page/@Section-Main/Main-Section'
+import { fire } from '@/firebase/firebase'
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 export const Login_Page: NextPage = () => {
+  const [user, loading, error] = useAuthState(fire.auth())
+  const router = useRouter()
+
+  if (user) console.log(user.email)
+
+  // if (loading) {
+  //   return null
+  // }
+
+  if (user) {
+    setTimeout(() => {
+      router.push('/browse')
+    }, 0)
+    return <></>
+  }
+
   return (
     <>
       <Head

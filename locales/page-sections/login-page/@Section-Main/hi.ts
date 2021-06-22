@@ -5,7 +5,7 @@ export default {
   submitButton: 'साइन इन करें',
   rememberMe: 'याद रखें',
   needHelp: 'आपको मदद चाहिए?',
-  facebookLogin: 'Facebook से लॉग इन करें',
+  googleLogin: 'Google से लॉग इन करें',
   newToNetflix: 'Netflix पर नए हैं? ',
   signUpNow: 'अभी साइन अप करें.',
   protectedByReCAPTCHA: `यह पक्का करने के लिए कि आप बॉट नहीं हैं, यह पेज Google reCAPTCHA द्वारा सुरक्षित है.`,
