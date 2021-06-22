@@ -36,7 +36,7 @@ export const Landing_Page: NextPage = (
     request(API_ENDPOINT, query)
   )
 
-  console.log(!hello ? 'loading . .' : hello.hello)
+  // console.log(!hello ? 'loading . .' : hello.hello)
 
   // console.log(auth)
 
