@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "A Next.js - Netflix Clone | Powered By React.js",
   "private": true,
-  "engines": {
-    "node": ">=12.0.0",
-    "npm": ">=6.0.0"
-  },
-  "engineStrict": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
