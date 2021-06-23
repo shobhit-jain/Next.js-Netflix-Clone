@@ -75,11 +75,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         </AllStateProvider>
       </SWRConfig>
 
-      {isProd && (
+      {/* {isProd && (
         <>
           <WebSecurity />
         </>
-      )}
+      )} */}
     </>
   )
 }

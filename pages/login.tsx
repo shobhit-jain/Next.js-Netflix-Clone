@@ -7,22 +7,18 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import nookies from 'nookies'
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+import { firebaseAdmin } from '@/firebase/firebase-admin'
 
 export const Login_Page: NextPage = () => {
   const [user, loading, error] = useAuthState(fire.auth())
   const router = useRouter()
 
-  if (user) console.log(user.email)
-
-  // if (loading) {
-  //   return null
-  // }
-
   if (user) {
-    setTimeout(() => {
-      router.push('/browse')
-    }, 0)
-    return <></>
+    console.log(user.email)
+  } else {
+    console.log('no user')
   }
 
   return (
@@ -42,6 +38,28 @@ export const Login_Page: NextPage = () => {
       </div>
     </>
   )
+}
+
+export const getServerSideProps = async (
+  ctx: GetServerSidePropsContext
+): Promise<any> => {
+  try {
+    const cookies = nookies.get(ctx)
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
+
+    // the user is authenticated!
+    const { uid, email } = token
+
+    console.log(cookies)
+
+    // FETCH STUFF HERE!! 🚀
+
+    return {
+      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+    }
+  } catch (err) {
+    return { props: {} as never }
+  }
 }
 
 export default Login_Page

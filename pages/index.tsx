@@ -36,21 +36,6 @@ export const Landing_Page: NextPage = (
     request(API_ENDPOINT, query)
   )
 
-  // console.log(!hello ? 'loading . .' : hello.hello)
-
-  // console.log(auth)
-
-  // if (loading) {
-  //   return null
-  // }
-
-  // if (user) {
-  //   setTimeout(() => {
-  //     router.push('/browse')
-  //   }, 0)
-  //   return <></>
-  // }
-
   return (
     <>
       <Head
@@ -77,8 +62,6 @@ export const Landing_Page: NextPage = (
   )
 }
 
-export default Landing_Page
-
 export const getServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<any> => {
@@ -99,6 +82,7 @@ export const getServerSideProps = async (
     // or token verification failed
     // either way: redirect to the login page
     ctx.res.writeHead(302, { Location: '/login' })
+    if (process.env.NODE_ENV !== 'development') ctx.res.end()
     ctx.res.end()
 
     // `as never` prevents inference issues
@@ -108,3 +92,5 @@ export const getServerSideProps = async (
     return { props: {} as never }
   }
 }
+
+export default Landing_Page

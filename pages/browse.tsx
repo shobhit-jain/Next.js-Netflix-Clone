@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next'
 import { fire } from '@/firebase/firebase'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -11,32 +10,15 @@ export const Browse_Movies: NextPage = () => {
 
   const logout = () => fire.auth().signOut()
 
-  if (loading) {
-    return <></>
-  }
+  return (
+    <div>
+      <h1 className="bg-black text-white text-center py-3 font-600">
+        Browse Movies
+      </h1>
 
-  if (user)
-    return (
-      <div>
-        <h1 className="bg-black text-white text-center py-3 font-600">
-          Browse Movies
-        </h1>
-
-        <button onClick={() => logout()}>Sign Out</button>
-      </div>
-    )
-
-  setTimeout(() => {
-    router.push('/login')
-  }, 0)
-  return <></>
+      <button onClick={() => logout()}>Sign Out</button>
+    </div>
+  )
 }
 
 export default Browse_Movies
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log(context.req.cookies)
-  return {
-    props: {},
-  }
-}

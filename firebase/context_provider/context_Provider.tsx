@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import nookies from 'nookies'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import { fire } from '../firebase'
 
 const AuthContext = createContext<{ user: firebase.User | null }>({

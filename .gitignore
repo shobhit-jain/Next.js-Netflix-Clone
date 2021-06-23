@@ -15,4 +15,3 @@ todo
 **/public/fallback-*.js
 
 # firebase
-secret.json
