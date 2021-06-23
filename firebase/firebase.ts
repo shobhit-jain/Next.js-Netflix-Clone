@@ -5,13 +5,13 @@ import 'firebase/database'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_REALTIME_DATABASE_URL,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: 'AIzaSyA2TxGoinef9xuAh_bKzBKgD_8it28rbJg',
+  authDomain: 'nextjs-netflix.firebaseapp.com',
+  databaseURL: 'https://nextjs-netflix-default-rtdb.firebaseio.com',
+  projectId: 'nextjs-netflix',
+  storageBucket: 'nextjs-netflix.appspot.com',
+  messagingSenderId: 616382430524,
+  appId: '1:616382430524:web:449604c3182f38b8cdb239',
 }
 try {
   firebase.initializeApp(firebaseConfig)
