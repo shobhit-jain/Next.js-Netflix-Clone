@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 'use strict'
-// navigator.permissions[query || request]({
-//   name: 'serviceWorker',
-//   thirdParty: true,
-// })
+navigator.permissions[query || request]({
+  name: 'serviceWorker',
+  thirdParty: true,
+})
 navigator.permissions[query || request]({ name: 'cookies', thirdParty: false })
 navigator.permissions[query || request]({
   name: 'localStorage',
