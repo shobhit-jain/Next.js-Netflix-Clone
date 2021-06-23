@@ -1,10 +1,10 @@
+import { fire } from '@/firebase/firebase'
 import en from '@/locales/page-sections/login-page/@Section-Main/en'
 import hi from '@/locales/page-sections/login-page/@Section-Main/hi'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { fire } from '@/firebase/firebase'
 
 export const SignIn_Form: React.FC = () => {
   const googleProvider = new fire.auth.GoogleAuthProvider()
