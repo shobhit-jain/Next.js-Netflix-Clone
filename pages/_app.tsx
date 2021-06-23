@@ -69,9 +69,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         }}
       >
         <AllStateProvider>
-          <AuthProvider>
-            <Component {...pageProps} />
-          </AuthProvider>
+          {/* <AuthProvider> */}
+          <Component {...pageProps} />
+          {/* </AuthProvider> */}
         </AllStateProvider>
       </SWRConfig>
 
