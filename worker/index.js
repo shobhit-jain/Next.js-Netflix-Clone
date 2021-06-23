@@ -1,19 +1,5 @@
 /* eslint-disable no-undef */
 'use strict'
-navigator.permissions[query || request]({
-  name: 'serviceWorker',
-  thirdParty: true,
-})
-navigator.permissions[query || request]({ name: 'cookies', thirdParty: false })
-navigator.permissions[query || request]({
-  name: 'localStorage',
-  thirdParty: true,
-})
-navigator.permissions[query || request]({
-  name: 'sessionStorage',
-  thirdParty: true,
-})
-navigator.permissions[query || request]({ name: 'cache', thirdParty: true })
 
 importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js'
