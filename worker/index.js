@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
 'use strict'
 
-importScripts(
-  'https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js'
-)
+// importScripts(
+//   'https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js' // bad url => 404 not found
+// )
+
+importScripts('https://developers.google.com/sw.js')
 importScripts(
   'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js'
 )
