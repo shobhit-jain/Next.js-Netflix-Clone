@@ -94,7 +94,11 @@ const MetaData = () => {
       />
 
       {/* site manifest */}
-      <link rel="manifest" href={`${domain_prefix}/site.webmanifest`} />
+      <link
+        rel="manifest"
+        href={`/site.webmanifest`}
+        crossOrigin="use-credentials"
+      />
 
       {/* web-app title for chrome */}
       <meta name="application-name" content="Netflix" />

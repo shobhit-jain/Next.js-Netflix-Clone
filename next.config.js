@@ -51,16 +51,16 @@ module.exports = withPlugins(
     [withImages],
     [withVideos],
     [whiteList_Image_Domains],
-    // [
-    //   withPWA,
-    //   {
-    //     pwa: {
-    //       register: true,
-    //       disable: !isProd,
-    //       dest: 'public',
-    //     },
-    //   },
-    // ],
+    [
+      withPWA,
+      {
+        pwa: {
+          register: true,
+          disable: !isProd,
+          dest: 'public',
+        },
+      },
+    ],
   ],
   nextConfig
 )

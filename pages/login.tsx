@@ -9,7 +9,7 @@ import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import nookies from 'nookies'
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
-import { firebaseAdmin } from '@/firebase/firebase-admin'
+import { verifyIdToken } from '@/firebase/firebase-admin'
 
 export const Login_Page: NextPage = () => {
   const [user, loading, error] = useAuthState(fire.auth())

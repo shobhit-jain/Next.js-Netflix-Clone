@@ -13,9 +13,9 @@ import { request } from 'graphql-request'
 import useSWR from 'swr'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { fire } from '@/firebase/firebase'
-import nookies from 'nookies'
+// import nookies, { parseCookies, parseCookies } from 'nookies'
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
-import { firebaseAdmin } from '@/firebase/firebase-admin'
+import { verifyIdToken } from '@/firebase/firebase-admin'
 
 const API_ENDPOINT = '/api/graphql'
 
@@ -25,40 +25,50 @@ const helloQuery = `{
     )
 }`
 
-export const Landing_Page: NextPage = () =>
-  // props: InferGetServerSidePropsType<typeof getServerSideProps>
-  {
-    const router = useRouter()
-    const { locale } = router
-    const [user, loading, error] = useAuthState(fire.auth())
+export const Landing_Page: NextPage = () => {
+  const router = useRouter()
+  const { locale } = router
+  const [user, loading, error] = useAuthState(fire.auth())
 
-    const { data: hello, error: e } = useSWR(helloQuery, (query) =>
-      request(API_ENDPOINT, query)
-    )
+  const { data: hello, error: e } = useSWR(helloQuery, (query) =>
+    request(API_ENDPOINT, query)
+  )
 
-    return (
-      <>
-        <Head
-          title={
-            locale === 'en'
-              ? 'Netflix India – Watch TV Shows Online, Watch Movies Online'
-              : 'Netflix भारत - टीवी शो और फ़िल्में ऑनलाइन देखें'
-          }
-          description="Landing Page Description"
-          canonical="https://netflix-web.vercel.app"
-        />
-
-        <div>{/* <p>{props.message}</p> */}</div>
-        <Main_Section />
-        <Enjoy_On_Your_Tv />
-        <Download_Your_Shows />
-        <Watch_Everywhere />
-        <Create_Profiles_For_Children />
-        <Frequently_Asked_Questions />
-        <Footer />
-      </>
-    )
+  if (user) {
+    console.log(user.email)
   }
+
+  return (
+    <>
+      <Head
+        title={
+          locale === 'en'
+            ? 'Netflix India – Watch TV Shows Online, Watch Movies Online'
+            : 'Netflix भारत - टीवी शो और फ़िल्में ऑनलाइन देखें'
+        }
+        description="Landing Page Description"
+        canonical="https://netflix-web.vercel.app"
+      />
+
+      <div>{/* <p>{props.message}</p> */}</div>
+
+      <Main_Section />
+      <Enjoy_On_Your_Tv />
+      <Download_Your_Shows />
+      <Watch_Everywhere />
+      <Create_Profiles_For_Children />
+      <Frequently_Asked_Questions />
+      <Footer />
+    </>
+  )
+}
+
+// Landing_Page.getInitialProps = ({ req }: any) => {
+//   const cookies = parseCookies(req)
+//   return {
+//     initialRememberValue: cookies.rememberMe,
+//   }
+// }
 
 // export const getServerSideProps = async (
 //   ctx: GetServerSidePropsContext
@@ -87,6 +97,27 @@ export const Landing_Page: NextPage = () =>
 //     // with InferGetServerSidePropsType.
 //     // The props returned here don't matter because we've
 //     // already redirected the user.
+//     return { props: {} as never }
+//   }
+// }
+
+// export const getServerSideProps = async (
+//   ctx: GetServerSidePropsContext
+// ): Promise<any> => {
+//   //
+//   try {
+//     const cookies = nookies.get(ctx)
+//     const token = await verifyIdToken(cookies.token)
+//     const { uid, email } = token
+
+//     return {
+//       props: {
+//         message: `Your email is ${email} and your UID is ${uid}.`,
+//       },
+//     }
+//   } catch (err) {
+//     ctx.res.writeHead(302, { Location: '/login' })
+//     ctx.res.end()
 //     return { props: {} as never }
 //   }
 // }
