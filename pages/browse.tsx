@@ -64,8 +64,7 @@ Browse_Movies.getInitialProps = (ctx) => {
     }
   }
 
-  return {
-    props: {},
-  }
+  return {}
 }
+
 export default Browse_Movies
