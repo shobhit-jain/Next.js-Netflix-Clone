@@ -17,28 +17,22 @@ import nookies from 'nookies'
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import { verifyIdToken } from '@/firebase/firebase-admin'
 
-const API_ENDPOINT = '/api/graphql'
+// const API_ENDPOINT = '/api/graphql'
 
-const helloQuery = `{
-    hello(
-      name: "sam"
-    )
-}`
+// const helloQuery = `{
+//     hello(
+//       name: "sam"
+//     )
+// }`
 
 export const Landing_Page: NextPage = () => {
   const router = useRouter()
   const { locale } = router
   const [user, loading, error] = useAuthState(fire.auth())
 
-  const { data: hello, error: e } = useSWR(helloQuery, (query) =>
-    request(API_ENDPOINT, query)
-  )
-
-  if (user) {
-    console.log(user.email)
-  }
-
-  console.log(hello)
+  // const { data: hello, error: e } = useSWR(helloQuery, (query) =>
+  //   request(API_ENDPOINT, query)
+  // )
 
   return (
     <>
@@ -51,10 +45,6 @@ export const Landing_Page: NextPage = () => {
         description="Landing Page Description"
         canonical="https://netflix-web.vercel.app"
       />
-
-      <div>{/* <p>{props.message}</p> */}</div>
-
-      <div>{loading ? 'loading . .' : user.email}</div>
 
       <Main_Section />
       <Enjoy_On_Your_Tv />
