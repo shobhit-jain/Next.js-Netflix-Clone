@@ -2,7 +2,7 @@ import { InferGetServerSidePropsType, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { firebaseAdmin } from '@/firebase/firebaseAdmin'
+import { verifyIdToken } from '@/firebase/firebase-admin'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
@@ -10,16 +10,18 @@ import { GetServerSidePropsContext } from 'next'
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
-    // const cookies = nookies.get(ctx)
-    // console.log(JSON.stringify(cookies, null, 2))
-    // const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
-    // const { uid, email } = token
+    const cookies = nookies.get(ctx)
+    console.log(JSON.stringify(cookies, null, 2))
+    const token = await verifyIdToken(cookies.token)
+    const { uid, email } = token
 
     // the user is authenticated!
     // FETCH STUFF HERE
 
     return {
-      props: {},
+      props: {
+        message: `Your email is ${email} and your UID is ${uid}.`,
+      },
     }
   } catch (err) {
     // either the `token` cookie didn't exist
@@ -40,33 +42,33 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 }
 
-export const Browse_Movies: NextPage = () =>
-  // props: InferGetServerSidePropsType<typeof getServerSideProps>
-  {
-    const [user, loading, error] = useAuthState(firebaseClient.auth())
-    const router = useRouter()
+export const Browse_Movies: any = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
+  const [user, loading, error] = useAuthState(firebaseClient.auth())
+  const router = useRouter()
 
-    return (
-      <div>
-        <h1 className="bg-black text-white text-center py-3 font-600">
-          Browse Movies
-        </h1>
+  return (
+    <div>
+      <h1 className="bg-black text-white text-center py-3 font-600">
+        Browse Movies
+      </h1>
 
-        {/* <p>{props.message}</p> */}
-        <button
-          onClick={async () => {
-            await firebaseClient
-              .auth()
-              .signOut()
-              .then(() => {
-                router.push('/')
-              })
-          }}
-        >
-          Sign Out
-        </button>
-      </div>
-    )
-  }
+      <p>{props.message}</p>
+      <button
+        onClick={async () => {
+          await firebaseClient
+            .auth()
+            .signOut()
+            .then(() => {
+              router.push('/')
+            })
+        }}
+      >
+        Sign Out
+      </button>
+    </div>
+  )
+}
 
 export default Browse_Movies
