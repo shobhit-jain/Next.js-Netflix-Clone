@@ -16,11 +16,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     return firebase.auth().onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null)
-        nookies.set(undefined, 'token', '', { path: '/' })
+        nookies.set(undefined, 'token', '', {})
       } else {
         const token = await user.getIdToken()
         setUser(user)
-        nookies.set(undefined, 'token', token, { path: '/' })
+        nookies.set(undefined, 'token', token, {})
       }
     })
   }, [])

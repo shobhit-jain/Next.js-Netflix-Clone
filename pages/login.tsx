@@ -40,26 +40,4 @@ export const Login_Page: NextPage = () => {
   )
 }
 
-// export const getServerSideProps = async (
-//   ctx: GetServerSidePropsContext
-// ): Promise<any> => {
-//   try {
-//     const cookies = nookies.get(ctx)
-//     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
-
-//     // the user is authenticated!
-//     const { uid, email } = token
-
-//     console.log(cookies)
-
-//     // FETCH STUFF HERE!! 🚀
-
-//     return {
-//       props: { message: `Your email is ${email} and your UID is ${uid}.` },
-//     }
-//   } catch (err) {
-//     return { props: {} as never }
-//   }
-// }
-
 export default Login_Page
