@@ -29,7 +29,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       nookies.destroy(null, 'token')
       nookies.set(null, 'token', token, { path: '/' })
     })
-  }, [])
+  }, [user])
 
   // force refresh the token every 10 minutes
   useEffect(() => {
@@ -39,7 +39,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       if (user) await user.getIdToken(true)
     }, 10 * 60 * 1000)
     return () => clearInterval(handle)
-  }, [])
+  }, [user])
 
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
