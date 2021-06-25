@@ -12,12 +12,7 @@ import { useRouter } from 'next/router'
 import { request } from 'graphql-request'
 import useSWR from 'swr'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { fire } from '@/firebase/firebase'
-// import nookies, { parseCookies } from 'nookies'
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
-import { verifyIdToken } from '@/firebase/firebase-admin'
-import { parseCookies } from '@/lib/parseCookies'
-import axios from 'axios'
+import { firebaseClient } from '@/firebase/firebaseClient'
 
 // const API_ENDPOINT = '/api/graphql'
 
@@ -30,11 +25,17 @@ import axios from 'axios'
 export const Landing_Page: NextPage = ({ initialToken }: any) => {
   const router = useRouter()
   const { locale } = router
-  const [user, loading, error] = useAuthState(fire.auth())
+  const [user, loading, error] = useAuthState(firebaseClient.auth())
 
   // const { data: hello, error: e } = useSWR(helloQuery, (query) =>
   //   request(API_ENDPOINT, query)
   // )
+
+  if (user) {
+    console.log(user.email)
+  } else {
+    console.log('no user')
+  }
 
   return (
     <>
@@ -59,24 +60,6 @@ export const Landing_Page: NextPage = ({ initialToken }: any) => {
       <Footer />
     </>
   )
-}
-
-export async function getServerSideProps(context): Promise<any> {
-  const res = axios.get(`/api/demo/get/dummy-data`)
-  const data = res
-
-  if (data) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {}, // will be passed to the page component as props
-  }
 }
 
 export default Landing_Page
