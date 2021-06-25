@@ -7,9 +7,8 @@ import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
 
-export const getServerSideProps = async (
-  ctx: GetServerSidePropsContext
-): Promise<any> => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     // const cookies = nookies.get(ctx)
     // console.log(JSON.stringify(cookies, null, 2))
@@ -20,7 +19,7 @@ export const getServerSideProps = async (
     // FETCH STUFF HERE
 
     return {
-      // props: { message: `Your email is ${email} and your UID is ${uid}.` },
+      props: {},
     }
   } catch (err) {
     // either the `token` cookie didn't exist
