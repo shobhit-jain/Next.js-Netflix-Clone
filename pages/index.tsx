@@ -13,7 +13,7 @@ import { request } from 'graphql-request'
 import useSWR from 'swr'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { fire } from '@/firebase/firebase'
-// import nookies, { parseCookies, parseCookies } from 'nookies'
+import nookies from 'nookies'
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import { verifyIdToken } from '@/firebase/firebase-admin'
 
@@ -38,6 +38,8 @@ export const Landing_Page: NextPage = () => {
     console.log(user.email)
   }
 
+  console.log(hello)
+
   return (
     <>
       <Head
@@ -52,6 +54,8 @@ export const Landing_Page: NextPage = () => {
 
       <div>{/* <p>{props.message}</p> */}</div>
 
+      <div>{loading ? 'loading . .' : user.email}</div>
+
       <Main_Section />
       <Enjoy_On_Your_Tv />
       <Download_Your_Shows />
@@ -62,13 +66,6 @@ export const Landing_Page: NextPage = () => {
     </>
   )
 }
-
-// Landing_Page.getInitialProps = ({ req }: any) => {
-//   const cookies = parseCookies(req)
-//   return {
-//     initialRememberValue: cookies.rememberMe,
-//   }
-// }
 
 // export const getServerSideProps = async (
 //   ctx: GetServerSidePropsContext
@@ -101,25 +98,24 @@ export const Landing_Page: NextPage = () => {
 //   }
 // }
 
-// export const getServerSideProps = async (
-//   ctx: GetServerSidePropsContext
-// ): Promise<any> => {
-//   //
-//   try {
-//     const cookies = nookies.get(ctx)
-//     const token = await verifyIdToken(cookies.token)
-//     const { uid, email } = token
+export const getServerSideProps = async (
+  ctx: GetServerSidePropsContext
+): Promise<any> => {
+  try {
+    const cookies = nookies.get(ctx)
+    const token = await verifyIdToken(cookies.token)
+    const { uid, email } = token
 
-//     return {
-//       props: {
-//         message: `Your email is ${email} and your UID is ${uid}.`,
-//       },
-//     }
-//   } catch (err) {
-//     ctx.res.writeHead(302, { Location: '/login' })
-//     ctx.res.end()
-//     return { props: {} as never }
-//   }
-// }
+    return {
+      props: {
+        message: `Your email is ${email} and your UID is ${uid}.`,
+      },
+    }
+  } catch (err) {
+    ctx.res.writeHead(302, { Location: '/login' })
+    ctx.res.end()
+    return { props: {} as never }
+  }
+}
 
 export default Landing_Page
