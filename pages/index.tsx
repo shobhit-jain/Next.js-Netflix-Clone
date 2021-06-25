@@ -26,7 +26,7 @@ import { parseCookies } from '@/lib/parseCookies'
 //     )
 // }`
 
-export const Landing_Page: NextPage = ({ initialToken }: any) => {
+export const Landing_Page: NextPage = () => {
   const router = useRouter()
   const { locale } = router
   const [user, loading, error] = useAuthState(fire.auth())
@@ -47,7 +47,7 @@ export const Landing_Page: NextPage = ({ initialToken }: any) => {
         canonical="https://netflix-web.vercel.app"
       />
 
-      <div>{initialToken}</div>
+      {/* <div>{initialToken}</div> */}
 
       <Main_Section />
       <Enjoy_On_Your_Tv />
@@ -60,12 +60,12 @@ export const Landing_Page: NextPage = ({ initialToken }: any) => {
   )
 }
 
-Landing_Page.getInitialProps = ({ req }) => {
-  const cookies = parseCookies(req)
+// Landing_Page.getInitialProps = ({ req }) => {
+//   const cookies = parseCookies(req)
 
-  return {
-    initialToken: cookies.token,
-  }
-}
+//   return {
+//     initialToken: cookies.token,
+//   }
+// }
 
 export default Landing_Page
