@@ -15,7 +15,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     return firebaseClient.auth().onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null)
-        nookies.set(undefined, 'token', '', { path: '/' })
+        nookies.set(undefined, 'token', 'out', { path: '/' })
       } else {
         const token = await user.getIdToken()
         setUser(user)

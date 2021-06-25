@@ -7,28 +7,7 @@ import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const cookies = nookies.get(ctx)
-
-  if (cookies.token === '') {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login',
-      },
-      // `as never` is required for correct type inference
-      // by InferGetServerSidePropsType below
-      props: {} as never,
-    }
-  }
-
-  return {
-    props: {},
-  }
-}
-
-export const Browse_Movies: any = () => {
+export const Browse_Movies: NextPage = () => {
   const [user, loading, error] = useAuthState(firebaseClient.auth())
   const router = useRouter()
 
@@ -44,7 +23,7 @@ export const Browse_Movies: any = () => {
             .auth()
             .signOut()
             .then(() => {
-              router.push('/')
+              // router.push('/')
             })
         }}
       >
@@ -54,4 +33,39 @@ export const Browse_Movies: any = () => {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+//   const cookies = nookies.get(ctx)
+
+//   if (cookies.token === '') {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: '/login',
+//       },
+//       // `as never` is required for correct type inference
+//       // by InferGetServerSidePropsType below
+//       props: {} as never,
+//     }
+//   }
+
+//   return {
+//     props: {},
+//   }
+// }
+
+Browse_Movies.getInitialProps = (ctx) => {
+  const cookies = nookies.get(ctx)
+
+  if (ctx.res) {
+    if (cookies.token === 'out') {
+      ctx.res.writeHead(302, { Location: '/login' })
+      ctx.res.end()
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
 export default Browse_Movies
