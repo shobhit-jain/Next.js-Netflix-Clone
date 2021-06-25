@@ -53,6 +53,7 @@ export const Browse_Movies: NextPage = (
         Browse Movies
       </h1>
 
+      <p>{props.message}</p>
       <button
         onClick={async () => {
           await firebaseClient
