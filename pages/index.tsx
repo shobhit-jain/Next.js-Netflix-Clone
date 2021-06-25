@@ -61,7 +61,7 @@ export const Landing_Page: NextPage = ({ initialToken }: any) => {
   )
 }
 
-export async function getServerSideProps(): Promise<any> {
+export async function getServerSideProps(context): Promise<any> {
   const res = axios.get(`/api/demo/get/dummy-data`)
   const data = res
 
