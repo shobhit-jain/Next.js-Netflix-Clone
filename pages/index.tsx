@@ -17,6 +17,7 @@ import { fire } from '@/firebase/firebase'
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
 import { verifyIdToken } from '@/firebase/firebase-admin'
 import { parseCookies } from '@/lib/parseCookies'
+import axios from 'axios'
 
 // const API_ENDPOINT = '/api/graphql'
 
@@ -60,11 +61,21 @@ export const Landing_Page: NextPage = ({ initialToken }: any) => {
   )
 }
 
-Landing_Page.getInitialProps = ({ req }) => {
-  const cookies = parseCookies(req)
+export async function getServerSideProps(): Promise<any> {
+  const res = axios.get(`/api/demo/get/dummy-data`)
+  const data = res
+
+  if (data) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
 
   return {
-    initialToken: cookies.token,
+    props: {}, // will be passed to the page component as props
   }
 }
 
