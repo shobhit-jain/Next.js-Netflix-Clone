@@ -11,12 +11,24 @@ const CLIENT_CONFIG = {
   appId: '616382430524:web:449604c3182f38b8cdb239',
 }
 
-if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
+try {
   firebaseClient.initializeApp(CLIENT_CONFIG)
-  firebaseClient
-    .auth()
-    .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
-  ;(window as any).firebase = firebaseClient
+  if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
+    firebaseClient
+      .auth()
+      .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
+  }
+} catch (err) {
+  if (!/already exists/.test(err.message))
+    console.error('Firebase initialization error', err.stack)
 }
+
+// if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
+//   firebaseClient.initializeApp(CLIENT_CONFIG)
+//   firebaseClient
+//     .auth()
+//     .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
+//   ;(window as any).firebase = firebaseClient
+// }
 
 export { firebaseClient }
