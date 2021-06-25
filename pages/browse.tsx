@@ -9,27 +9,9 @@ import { GetServerSidePropsContext } from 'next'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const cookies = nookies.get(ctx)
-    console.log(JSON.stringify(cookies, null, 2))
-    const token = await verifyIdToken(cookies.token)
-    const { uid, email } = token
+  const cookies = nookies.get(ctx)
 
-    // the user is authenticated!
-    // FETCH STUFF HERE
-
-    return {
-      props: {
-        message: `Your email is ${email} and your UID is ${uid}.`,
-      },
-    }
-  } catch (err) {
-    // either the `token` cookie didn't exist
-    // or token verification failed
-    // either way: redirect to the login page
-    // either the `token` cookie didn't exist
-    // or token verification failed
-    // either way: redirect to the login page
+  if (cookies.token === '') {
     return {
       redirect: {
         permanent: false,
@@ -40,11 +22,13 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       props: {} as never,
     }
   }
+
+  return {
+    props: {} as never,
+  }
 }
 
-export const Browse_Movies: any = (
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) => {
+export const Browse_Movies: any = () => {
   const [user, loading, error] = useAuthState(firebaseClient.auth())
   const router = useRouter()
 
@@ -54,7 +38,6 @@ export const Browse_Movies: any = (
         Browse Movies
       </h1>
 
-      <p>{props.message}</p>
       <button
         onClick={async () => {
           await firebaseClient
