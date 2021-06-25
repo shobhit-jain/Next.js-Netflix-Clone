@@ -13,11 +13,11 @@ if (!privateKey || !clientEmail || !projectId) {
 if (!firebaseAdmin.apps.length) {
   firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert({
-      privateKey: privateKey,
-      clientEmail,
-      projectId,
+      projectId: 'nextjs-netflix',
+      privateKey: process.env.private_key?.replace(/\\n/g, '\n'),
+      clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
     }),
-    databaseURL: 'https://nextjs-netflix-default-rtdb.firebaseio.com',
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_REALTIME_DATABASE_URL,
   })
 }
 
