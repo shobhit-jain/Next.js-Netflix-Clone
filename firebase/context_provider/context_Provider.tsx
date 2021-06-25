@@ -2,6 +2,7 @@ import React, { createContext } from 'react'
 import nookies from 'nookies'
 import firebase from 'firebase/app'
 import { fire } from '../firebase'
+import Cookies from 'js-cookie'
 
 const AuthContext = createContext<{ user: firebase.User | null }>({
   user: null,
@@ -16,11 +17,13 @@ export const AuthProvider: React.FC = ({ children }) => {
     return firebase.auth().onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null)
-        nookies.set(undefined, 'token', '', {})
+        // nookies.set(undefined, 'token', '', {})
+        Cookies.set('token', '')
       } else {
         const token = await user.getIdToken()
         setUser(user)
-        nookies.set(undefined, 'token', token, {})
+        // nookies.set(undefined, 'token', token, {})
+        Cookies.set('token', token)
       }
     })
   }, [])

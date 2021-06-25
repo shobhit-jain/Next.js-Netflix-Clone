@@ -23,24 +23,24 @@ export const Browse_Movies: NextPage = () => {
   )
 }
 
-export const getServerSideProps = async (
-  ctx: GetServerSidePropsContext
-): Promise<any> => {
-  try {
-    const cookies = nookies.get(ctx)
-    const token = await verifyIdToken(cookies.token)
-    const { uid, email } = token
+// export const getServerSideProps = async (
+//   ctx: GetServerSidePropsContext
+// ): Promise<any> => {
+//   try {
+//     const cookies = nookies.get(ctx)
+//     const token = await verifyIdToken(cookies.token)
+//     const { uid, email } = token
 
-    return {
-      props: {
-        message: `Your email is ${email} and your UID is ${uid}.`,
-      },
-    }
-  } catch (err) {
-    ctx.res.writeHead(302, { Location: '/login' })
-    ctx.res.end()
-    return { props: {} as never }
-  }
-}
+//     return {
+//       props: {
+//         message: `Your email is ${email} and your UID is ${uid}.`,
+//       },
+//     }
+//   } catch (err) {
+//     ctx.res.writeHead(302, { Location: '/login' })
+//     ctx.res.end()
+//     return { props: {} as never }
+//   }
+// }
 
 export default Browse_Movies
