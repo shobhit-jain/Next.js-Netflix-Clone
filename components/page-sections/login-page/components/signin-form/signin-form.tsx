@@ -1,4 +1,4 @@
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import en from '@/locales/page-sections/login-page/@Section-Main/en'
 import hi from '@/locales/page-sections/login-page/@Section-Main/hi'
 import Image from 'next/image'
@@ -7,13 +7,13 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 export const SignIn_Form: React.FC = () => {
-  const googleProvider = new fire.auth.GoogleAuthProvider()
+  const googleProvider = new firebaseClient.auth.GoogleAuthProvider()
   const router = useRouter()
   const { locale } = router
   const t = locale === 'en' ? en : hi
 
   const signInWithGoogle = () => {
-    fire
+    firebaseClient
       .auth()
       .signInWithPopup(googleProvider)
       .then((res) => {

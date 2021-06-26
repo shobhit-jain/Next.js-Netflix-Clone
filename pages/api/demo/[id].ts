@@ -1,4 +1,4 @@
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (
@@ -9,7 +9,7 @@ export default async (
 
   try {
     if (req.method === 'PUT') {
-      await fire
+      await firebaseClient
         .firestore()
         .collection('collection_name_demo')
         .doc(id)
@@ -18,7 +18,7 @@ export default async (
           updated: new Date().toISOString(),
         })
     } else if (req.method === 'GET') {
-      const doc = await fire
+      const doc = await firebaseClient
         .firestore()
         .collection('collection_name_demo')
         .doc(id)
@@ -29,7 +29,11 @@ export default async (
         res.status(200).json(doc.data())
       }
     } else if (req.method === 'DELETE') {
-      await fire.firestore().collection('collection_name_demo').doc(id).delete()
+      await firebaseClient
+        .firestore()
+        .collection('collection_name_demo')
+        .doc(id)
+        .delete()
     }
     res.status(200).end()
   } catch (e) {

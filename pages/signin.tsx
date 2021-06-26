@@ -1,11 +1,11 @@
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextPage } from 'next'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 export const SignIn: NextPage = () => {
-  const googleProvider = new fire.auth.GoogleAuthProvider()
-  const [user, loading, error] = useAuthState(fire.auth())
+  const googleProvider = new firebaseClient.auth.GoogleAuthProvider()
+  const [user, loading, error] = useAuthState(firebaseClient.auth())
 
   if (user) {
     console.log(user.email)
@@ -13,7 +13,7 @@ export const SignIn: NextPage = () => {
   }
 
   const signInWithGoogle = () => {
-    fire
+    firebaseClient
       .auth()
       .signInWithPopup(googleProvider)
       .then((res) => {
@@ -36,7 +36,7 @@ export const SignIn: NextPage = () => {
 
   // const logout = () => console.log('logged out')
 
-  const signOut = () => fire.auth().signOut()
+  const signOut = () => firebaseClient.auth().signOut()
 
   return (
     <div className="h-screen w-screen flex justify-center items-center font-serif">

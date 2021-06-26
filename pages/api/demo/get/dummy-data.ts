@@ -1,4 +1,4 @@
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (
@@ -6,7 +6,7 @@ export default async (
   res: NextApiResponse
 ): Promise<any> => {
   try {
-    const entries = await fire
+    const entries = await firebaseClient
       .firestore()
       .collection('collection_name_demo')
       .orderBy('created')

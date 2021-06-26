@@ -11,24 +11,45 @@ const CLIENT_CONFIG = {
   appId: '616382430524:web:449604c3182f38b8cdb239',
 }
 
-try {
+// try {
+//   firebaseClient.initializeApp(CLIENT_CONFIG)
+//   if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
+//     console.log('firebase client initialized')
+//     firebaseClient
+//       .auth()
+//       .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
+//     ;(window as any).firebase = firebaseClient
+//   }
+// } catch (err) {
+//   if (!/already exists/.test(err.message))
+//     console.error('Firebase initialization error', err.stack)
+// }
+
+// if (!firebaseClient.apps.length) {
+//   firebaseClient.initializeApp(CLIENT_CONFIG)
+//   console.log('initialized !')
+//   try {
+//     firebaseClient
+//       .auth()
+//       .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
+//     ;(window as any).firebase = firebaseClient
+//   } catch (err) {
+//     if (!/already exists/.test(err.message))
+//       console.error('Firebase initialization error', err.stack)
+//   }
+// }
+
+if (!firebaseClient.apps.length) {
+  console.log('initialization success !!!')
   firebaseClient.initializeApp(CLIENT_CONFIG)
-  if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
-    firebaseClient
-      .auth()
-      .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
-  }
-} catch (err) {
-  if (!/already exists/.test(err.message))
-    console.error('Firebase initialization error', err.stack)
 }
 
-// if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
+// if (!firebaseClient.apps.length) {
 //   firebaseClient.initializeApp(CLIENT_CONFIG)
-//   firebaseClient
-//     .auth()
-//     .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION)
-//   ;(window as any).firebase = firebaseClient
+//   // firebaseClient
+//   //   .auth()
+//   //   .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION);
+//   // (window as any).firebase = firebaseClient;
 // }
 
 export { firebaseClient }

@@ -2,12 +2,47 @@ import { InferGetServerSidePropsType, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { verifyIdToken } from '@/firebase/firebase-admin'
+import { firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
 
-export const Browse_Movies: NextPage = () => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const cookies = nookies.get(ctx)
+    console.log(JSON.stringify(cookies, null, 2))
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
+    const { uid, email } = token
+
+    // the user is authenticated!
+    // FETCH STUFF HERE
+
+    return {
+      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+    }
+  } catch (err) {
+    // either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    // either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+      // `as never` is required for correct type inference
+      // by InferGetServerSidePropsType below
+      props: {} as never,
+    }
+  }
+}
+
+export const Browse_Movies: any = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
   const [user, loading, error] = useAuthState(firebaseClient.auth())
   const router = useRouter()
 
@@ -17,13 +52,14 @@ export const Browse_Movies: NextPage = () => {
         Browse Movies
       </h1>
 
+      <p>{props.message}</p>
       <button
         onClick={async () => {
           await firebaseClient
             .auth()
             .signOut()
             .then(() => {
-              // router.push('/')
+              router.push('/')
             })
         }}
       >
@@ -31,40 +67,6 @@ export const Browse_Movies: NextPage = () => {
       </button>
     </div>
   )
-}
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-//   const cookies = nookies.get(ctx)
-
-//   if (cookies.token === '') {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: '/login',
-//       },
-//       // `as never` is required for correct type inference
-//       // by InferGetServerSidePropsType below
-//       props: {} as never,
-//     }
-//   }
-
-//   return {
-//     props: {},
-//   }
-// }
-
-Browse_Movies.getInitialProps = (ctx) => {
-  const cookies = nookies.get(ctx)
-
-  if (ctx.res) {
-    if (cookies.token === 'out') {
-      ctx.res.writeHead(302, { Location: '/login' })
-      ctx.res.end()
-    }
-  }
-
-  return {}
 }
 
 export default Browse_Movies
