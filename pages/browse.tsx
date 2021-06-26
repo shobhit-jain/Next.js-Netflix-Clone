@@ -1,11 +1,11 @@
 import { InferGetServerSidePropsType, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
 import { GetServerSidePropsContext } from 'next'
+import { useAuth } from '@/firebase/Auth-Provider/auth-provider'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
@@ -43,7 +43,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 export const Browse_Movies: any = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  const [user, loading, error] = useAuthState(firebaseClient.auth())
+  // const [user, loading, error] = useAuthState(firebaseClient.auth())
+  const { user } = useAuth()
   const router = useRouter()
 
   return (
@@ -52,6 +53,7 @@ export const Browse_Movies: any = (
         Browse Movies
       </h1>
 
+      <p>{`User ID: ${user ? user.uid : 'no user signed in'}`}</p>
       <p>{props.message}</p>
       <button
         onClick={async () => {

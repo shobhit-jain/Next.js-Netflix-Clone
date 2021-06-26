@@ -11,7 +11,6 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { request } from 'graphql-request'
 import useSWR from 'swr'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { firebaseClient } from '@/firebase/firebaseClient'
 
 // const API_ENDPOINT = '/api/graphql'
@@ -25,17 +24,10 @@ import { firebaseClient } from '@/firebase/firebaseClient'
 export const Landing_Page: NextPage = ({ initialToken }: any) => {
   const router = useRouter()
   const { locale } = router
-  const [user, loading, error] = useAuthState(firebaseClient.auth())
 
   // const { data: hello, error: e } = useSWR(helloQuery, (query) =>
   //   request(API_ENDPOINT, query)
   // )
-
-  if (user) {
-    console.log(user.email)
-  } else {
-    console.log('no user')
-  }
 
   return (
     <>

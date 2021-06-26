@@ -5,17 +5,9 @@ import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
 
 export const Login_Page: NextPage = () => {
-  const [user, loading, error] = useAuthState(firebaseClient.auth())
   const router = useRouter()
-
-  if (user) {
-    console.log(user.email)
-  } else {
-    console.log('no user')
-  }
 
   return (
     <>
