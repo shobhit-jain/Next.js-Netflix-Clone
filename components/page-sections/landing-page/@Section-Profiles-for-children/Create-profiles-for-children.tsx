@@ -17,6 +17,7 @@ export const Create_Profiles_For_Children: React.FC = () => {
             width="600"
             height="450"
             className="z-10"
+            placeholder="blur"
           />
         </div>
 

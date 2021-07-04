@@ -16,6 +16,7 @@ export const Download_Your_Shows: React.FC = () => {
             src={require('@/assets/section-images/stranger-things-girl.jpg')}
             width="750"
             height="550"
+            placeholder="blur"
           />
 
           <div className="bg-black border-2 flex items-center justify-between absolute lg:top-[65%] top-[65%] sm:top-[80%] md:w-[70%] w-full border-[#333] rounded-xl px-3 py-3">
