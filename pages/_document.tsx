@@ -5,33 +5,8 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import fs from 'fs'
-import path from 'path'
 
 const domain_prefix = 'https://netflix-web.vercel.app'
-
-class InlineStylesHead extends Head {
-  getCssLinks({ allFiles }: { allFiles: any }) {
-    const { assetPrefix } = this.context
-    if (!allFiles || allFiles.length === 0) return null
-
-    return allFiles
-      .filter((file: any) => /\.css$/.test(file))
-      .map((file: any) => (
-        <style
-          key={file}
-          nonce={this.props.nonce}
-          data-href={`${assetPrefix}/_next/${file}`}
-          dangerouslySetInnerHTML={{
-            __html: fs.readFileSync(
-              path.join(process.cwd(), '.next', file),
-              'utf-8'
-            ),
-          }}
-        />
-      ))
-  }
-}
 
 const MetaData = () => {
   return (
@@ -115,15 +90,17 @@ const MetaData = () => {
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<any> {
-    return await Document.getInitialProps(ctx)
+    const initialProps = await Document.getInitialProps(ctx)
+
+    return initialProps
   }
 
   render(): JSX.Element {
     return (
       <Html>
-        <InlineStylesHead>
+        <Head>
           <MetaData />
-        </InlineStylesHead>
+        </Head>
 
         <body>
           <noscript>

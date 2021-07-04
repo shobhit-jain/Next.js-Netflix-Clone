@@ -14,10 +14,6 @@ const nextConfig = {
   target: 'serverless',
   compress: true,
 
-  future: {
-    webpack5: true,
-  },
-
   i18n: {
     locales: ['en', 'hi'],
     defaultLocale: 'en',
@@ -51,16 +47,16 @@ module.exports = withPlugins(
     [withImages],
     [withVideos],
     [whiteList_Image_Domains],
-    // [
-    //   withPWA,
-    //   {
-    //     pwa: {
-    //       register: true,
-    //       disable: !isProd,
-    //       dest: 'public',
-    //     },
-    //   },
-    // ],
+    [
+      withPWA,
+      {
+        pwa: {
+          register: true,
+          disable: !isProd,
+          dest: 'public',
+        },
+      },
+    ],
   ],
   nextConfig
 )
