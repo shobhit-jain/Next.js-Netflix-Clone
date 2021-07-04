@@ -4,7 +4,7 @@ if (!firebaseAdmin.apps.length) {
   try {
     firebaseAdmin.initializeApp({
       credential: firebaseAdmin.credential.cert({
-        projectId: 'nextjs-netflix',
+        projectId: 'next-test-env',
         privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY?.replace(
           /\\n/g,
           '\n'
