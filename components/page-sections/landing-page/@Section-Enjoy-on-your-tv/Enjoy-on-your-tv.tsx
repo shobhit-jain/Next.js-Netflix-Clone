@@ -27,6 +27,7 @@ export const Enjoy_On_Your_Tv: React.FC = () => {
             width="550"
             height="400"
             className="z-10"
+            placeholder="blur"
           />
 
           <video
