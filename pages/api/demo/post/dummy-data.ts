@@ -1,4 +1,4 @@
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (
@@ -7,13 +7,13 @@ export default async (
 ): Promise<any> => {
   try {
     const { slug } = req.body
-    const demoData = await fire
+    const demoData = await firebaseClient
       .firestore()
       .collection('collection_name_demo')
       .get()
     // const demosData = demoData.docs.map((data) => data.data())
 
-    const { id } = await fire
+    const { id } = await firebaseClient
       .firestore()
       .collection('collection_name_demo')
       .add({
@@ -25,7 +25,7 @@ export default async (
     // if (demosData.some((data) => data.slug === slug)) {
     //   res.status(400).end()
     // } else {
-    //   const { id } = await fire
+    //   const { id } = await firebaseClient
     //     .firestore()
     //     .collection('collection_name_demo')
     //     .add({

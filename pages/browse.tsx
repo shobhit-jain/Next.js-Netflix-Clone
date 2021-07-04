@@ -1,16 +1,51 @@
-import { fire } from '@/firebase/firebase'
-import { verifyIdToken } from '@/firebase/firebase-admin'
-import { GetServerSidePropsContext, NextPage } from 'next'
+import { InferGetServerSidePropsType, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { firebaseAdmin } from '@/firebase/firebaseAdmin'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import nookies from 'nookies'
+import { GetServerSidePropsContext } from 'next'
+import { useAuth } from '@/firebase/Auth-Provider/auth-provider'
 
-export const Browse_Movies: NextPage = () => {
-  const [user, loading, error] = useAuthState(fire.auth())
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const cookies = nookies.get(ctx)
+    console.log(JSON.stringify(cookies, null, 2))
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
+    const { uid, email } = token
+
+    // the user is authenticated!
+    // FETCH STUFF HERE
+
+    return {
+      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+    }
+  } catch (err) {
+    // either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    // either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/login',
+      },
+      // `as never` is required for correct type inference
+      // by InferGetServerSidePropsType below
+      props: {} as never,
+    }
+  }
+}
+
+export const Browse_Movies: any = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
+  // const [user, loading, error] = useAuthState(firebaseClient.auth())
+  const { user } = useAuth()
   const router = useRouter()
-
-  const logout = () => fire.auth().signOut()
 
   return (
     <div>
@@ -18,29 +53,22 @@ export const Browse_Movies: NextPage = () => {
         Browse Movies
       </h1>
 
-      <button onClick={() => logout()}>Sign Out</button>
+      <p>{`User ID: ${user ? user.uid : 'no user signed in'}`}</p>
+      <p>{props.message}</p>
+      <button
+        onClick={async () => {
+          await firebaseClient
+            .auth()
+            .signOut()
+            .then(() => {
+              router.push('/')
+            })
+        }}
+      >
+        Sign Out
+      </button>
     </div>
   )
-}
-
-export const getServerSideProps = async (
-  ctx: GetServerSidePropsContext
-): Promise<any> => {
-  try {
-    const cookies = nookies.get(ctx)
-    const token = await verifyIdToken(cookies.token)
-    const { uid, email } = token
-
-    return {
-      props: {
-        message: `Your email is ${email} and your UID is ${uid}.`,
-      },
-    }
-  } catch (err) {
-    ctx.res.writeHead(302, { Location: '/login' })
-    ctx.res.end()
-    return { props: {} as never }
-  }
 }
 
 export default Browse_Movies

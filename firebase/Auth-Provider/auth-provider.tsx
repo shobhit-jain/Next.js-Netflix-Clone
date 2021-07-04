@@ -1,34 +1,33 @@
-import React, { createContext } from 'react'
+import React, { useState, useEffect, useContext, createContext } from 'react'
 import nookies from 'nookies'
-import firebase from 'firebase/app'
-import { fire } from '../firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 
-const AuthContext = createContext<{ user: firebase.User | null }>({
+const AuthContext = createContext<{ user: firebaseClient.User | null }>({
   user: null,
 })
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = React.useState<firebase.User | null>(null)
+  const [user, setUser] = useState<firebaseClient.User | null>(null)
 
   // listen for token changes
   // call setUser and write new token as a cookie
-  React.useEffect(() => {
-    return firebase.auth().onIdTokenChanged(async (user) => {
+  useEffect(() => {
+    return firebaseClient.auth().onIdTokenChanged(async (user) => {
       if (!user) {
         setUser(null)
-        nookies.set(undefined, 'token', '', {})
+        nookies.set(undefined, 'token', 'out', { path: '/' })
       } else {
         const token = await user.getIdToken()
         setUser(user)
-        nookies.set(undefined, 'token', token, {})
+        nookies.set(undefined, 'token', token, { path: '/' })
       }
     })
   }, [])
 
   // force refresh the token every 10 minutes
-  React.useEffect(() => {
+  useEffect(() => {
     const handle = setInterval(async () => {
-      const user = fire.auth().currentUser
+      const user = firebaseClient.auth().currentUser
       if (user) await user.getIdToken(true)
     }, 10 * 60 * 1000)
 
@@ -39,4 +38,8 @@ export const AuthProvider: React.FC = ({ children }) => {
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   )
+}
+
+export const useAuth: any = () => {
+  return useContext(AuthContext)
 }

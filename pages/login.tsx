@@ -1,25 +1,13 @@
-import { GetServerSideProps } from 'next'
 import { Footer } from '@/components/common/footer'
 import { Head } from '@/components/common/head'
 import { Login_Page_Main_Section } from '@/components/page-sections/login-page/@Section-Main/Main-Section'
-import { fire } from '@/firebase/firebase'
+import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import nookies from 'nookies'
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
-import { verifyIdToken } from '@/firebase/firebase-admin'
 
 export const Login_Page: NextPage = () => {
-  const [user, loading, error] = useAuthState(fire.auth())
   const router = useRouter()
-
-  if (user) {
-    console.log(user.email)
-  } else {
-    console.log('no user')
-  }
 
   return (
     <>

@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
-import { AuthProvider } from '@/firebase/context_provider/context_Provider'
+import { AuthProvider } from '@/firebase/Auth-Provider/auth-provider'
 import { AllStateProvider } from '@/provider/AllStateProvider'
 import axios from 'axios'
 import { AppProps } from 'next/app'
