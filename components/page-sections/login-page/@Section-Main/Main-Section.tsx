@@ -14,7 +14,6 @@ export const Login_Page_Main_Section: NextPage = () => {
               src={require('@/assets/icons/netflix-logo.svg')}
               width="166"
               height="50"
-              placeholder="blur"
             />
           </a>
         </Link>
