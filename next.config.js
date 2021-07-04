@@ -1,6 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production'
 const withPlugins = require('next-compose-plugins')
-const withImages = require('next-images')
 const withVideos = require('next-videos')
 const withPWA = require('next-pwa')
 
@@ -11,9 +10,6 @@ const whiteList_Image_Domains = {
 }
 
 const nextConfig = {
-  target: 'serverless',
-  compress: true,
-
   i18n: {
     locales: ['en', 'hi'],
     defaultLocale: 'en',
@@ -44,7 +40,6 @@ module.exports = withPlugins(
         pageExtensions: ['tsx', 'ts', 'js', 'jsx', 'md', 'mdx'],
       },
     ],
-    [withImages],
     [withVideos],
     [whiteList_Image_Domains],
     [
