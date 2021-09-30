@@ -2,7 +2,7 @@ import React from 'react'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import router from 'next/router'
 
-export const withAuth = (Component: any) => {
+export const withAuth = (Component: any): any => {
   return class AuthComponent extends React.Component {
     constructor(props: any) {
       super(props)

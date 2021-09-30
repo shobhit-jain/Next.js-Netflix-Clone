@@ -6,32 +6,40 @@ const AuthContext = createContext<{ user: firebaseClient.User | null }>({
   user: null,
 })
 
-export const AuthProvider: React.FC = ({ children }) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState<firebaseClient.User | null>(null)
 
-  // listen for token changes
-  // call setUser and write new token as a cookie
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      ;(window as any).nookies = nookies
+    }
+
     return firebaseClient.auth().onIdTokenChanged(async (user) => {
+      console.log(`token changed!`)
       if (!user) {
+        console.log(`no token found...`)
         setUser(null)
-        nookies.set(undefined, 'token', 'out', { path: '/' })
-      } else {
-        const token = await user.getIdToken()
-        setUser(user)
-        nookies.set(undefined, 'token', token, { path: '/' })
+        nookies.destroy(null, 'token')
+        nookies.set(null, 'token', '', { path: '/' })
+        return
       }
+
+      console.log(`updating token...`)
+      const token = await user.getIdToken()
+      setUser(user)
+      nookies.destroy(null, 'token')
+      nookies.set(null, 'token', token, { path: '/' })
     })
   }, [])
 
   // force refresh the token every 10 minutes
   useEffect(() => {
     const handle = setInterval(async () => {
+      console.log(`refreshing token...`)
       const user = firebaseClient.auth().currentUser
       if (user) await user.getIdToken(true)
     }, 10 * 60 * 1000)
-
-    // clean up setInterval
     return () => clearInterval(handle)
   }, [])
 
@@ -40,6 +48,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   )
 }
 
-export const useAuth: any = () => {
+export const useAuth = (): any => {
   return useContext(AuthContext)
 }

@@ -1,14 +1,10 @@
 import { Footer } from '@/components/common/footer'
 import { Head } from '@/components/common/head'
 import { Login_Page_Main_Section } from '@/components/page-sections/login-page/@Section-Main/Main-Section'
-import { firebaseClient } from '@/firebase/firebaseClient'
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import React from 'react'
 
 export const Login_Page: NextPage = () => {
-  const router = useRouter()
-
   return (
     <>
       <Head

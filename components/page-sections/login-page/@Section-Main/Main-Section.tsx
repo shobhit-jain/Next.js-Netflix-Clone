@@ -17,6 +17,20 @@ export const Login_Page_Main_Section: NextPage = () => {
             />
           </a>
         </Link>
+
+        {/* <button
+          className="text-white"
+          onClick={async () => {
+            await firebaseClient
+              .auth()
+              .signOut()
+              .then(() => {
+                router.push('/')
+              })
+          }}
+        >
+          Sign Out
+        </button> */}
       </div>
 
       <SignIn_Form />

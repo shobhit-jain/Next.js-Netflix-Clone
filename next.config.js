@@ -10,7 +10,7 @@ const whiteList_Image_Domains = {
 }
 
 const nextConfig = {
-  experimental: { optimizeCss: true },
+  // experimental: { optimizeCss: true },
 
   i18n: {
     locales: ['en', 'hi'],
@@ -44,16 +44,16 @@ module.exports = withPlugins(
     ],
     [withVideos],
     [whiteList_Image_Domains],
-    [
-      withPWA,
-      {
-        pwa: {
-          register: true,
-          disable: !isProd,
-          dest: 'public',
-        },
-      },
-    ],
+    // [
+    //   withPWA,
+    //   {
+    //     pwa: {
+    //       register: true,
+    //       disable: !isProd,
+    //       dest: 'public',
+    //     },
+    //   },
+    // ],
   ],
   nextConfig
 )

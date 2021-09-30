@@ -36,5 +36,10 @@
         "allow": ["warn", "error", "log"]
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
