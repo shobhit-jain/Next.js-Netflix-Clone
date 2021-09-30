@@ -12,6 +12,8 @@ Web Frontend Framework - (Next.js) - Netflix-Clone | Powered By React.js
 
 - Firebase Authentication - (Email / Password)
 
+- Firebase Authentication ( SSO ) - Google
+
 ## Local development
 
 ## Pre-requisites

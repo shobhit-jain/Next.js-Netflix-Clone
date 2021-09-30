@@ -9,9 +9,9 @@ import { Watch_Everywhere } from '@/components/page-sections/landing-page/@Secti
 import { NextPage } from 'next'
 import React from 'react'
 import { useRouter } from 'next/router'
-import { request } from 'graphql-request'
-import useSWR from 'swr'
-import { firebaseClient } from '@/firebase/firebaseClient'
+// import { request } from 'graphql-request'
+// import useSWR from 'swr'
+// import { firebaseClient } from '@/firebase/firebaseClient'
 
 // const API_ENDPOINT = '/api/graphql'
 

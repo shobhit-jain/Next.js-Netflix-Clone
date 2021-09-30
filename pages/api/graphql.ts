@@ -12,6 +12,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     users(parent, args, context) {
       return [{ name: 'Nextjs' }]
     },

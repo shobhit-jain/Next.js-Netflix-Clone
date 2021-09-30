@@ -6,11 +6,13 @@ export default async (
   res: NextApiResponse
 ): Promise<any> => {
   try {
-    const { slug } = req.body
-    const demoData = await firebaseClient
-      .firestore()
-      .collection('collection_name_demo')
-      .get()
+    // const { slug } = req.body
+
+    // const demoData = await firebaseClient
+    //   .firestore()
+    //   .collection('collection_name_demo')
+    //   .get()
+
     // const demosData = demoData.docs.map((data) => data.data())
 
     const { id } = await firebaseClient
