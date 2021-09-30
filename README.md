@@ -4,13 +4,13 @@ It's a open source project, So anyone can contribute to this project.
 
 ## Frontend : (Framework: Next.js)
 
-Web Frontend Framework - (Next.js) - Netflix-Clone | Powered By React.js
+Web Frontend Framework - ( Next.js ) - Netflix-Clone | Powered By React.js
 
 ## Backend : (Firebase)
 
 - Firestore (as rest service)
 
-- Firebase Authentication - (Email / Password)
+- Firebase Authentication - ( Email / Password )
 
 - Firebase Authentication ( SSO ) - Google
 
